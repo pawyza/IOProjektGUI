@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="300.0" prefWidth="500.0" stylesheets="@../Resources/Theme.css" xmlns="http://javafx.com/javafx/8.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AddReservationController">
+   <children>
+      <HBox layoutX="81.0" layoutY="49.0" prefHeight="202.0" prefWidth="339.0" spacing="80.0" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="49.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="206.0" prefWidth="229.0" spacing="30.0">
+               <children>
+                  <JFXTextField fx:id="edit_ScreeningRoomID" promptText="Record" />
+                  <JFXTextField fx:id="edit_Price" promptText="Client" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="202.0" prefWidth="168.0" spacing="30.0">
+               <children>
+                  <JFXDatePicker fx:id="datePicker_Begin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#datePicker_Begin_OnAction" prefHeight="20.0" prefWidth="140.0" promptText="Begin" />
+                  <JFXDatePicker fx:id="datePicker_End" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#datePicker_End_OnAction" prefHeight="18.0" prefWidth="138.0" promptText="End" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <JFXButton layoutX="116.0" layoutY="252.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#btn_OK_OnAction" prefHeight="26.0" prefWidth="75.0" text="Confirm" AnchorPane.bottomAnchor="21.599999999999966" AnchorPane.leftAnchor="116.0" AnchorPane.rightAnchor="308.8" AnchorPane.topAnchor="252.0" />
+      <JFXButton layoutX="288.0" layoutY="252.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#btn_Return_OnAction" prefHeight="26.0" prefWidth="75.0" text="Return" AnchorPane.bottomAnchor="21.6" AnchorPane.leftAnchor="288.0" AnchorPane.rightAnchor="136.8" AnchorPane.topAnchor="252.0" />
+   </children>
+</AnchorPane>
