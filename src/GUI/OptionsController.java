@@ -21,16 +21,16 @@ import subbusinesstier.Facade;
 
 
 public class OptionsController implements Initializable {
- // private static Facade f;
+  private static Facade f;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     f = new Facade();
     }
 
-   // public static Facade getF() {
-    //    return f;
-    //}
+    public static Facade getF() {
+        return f;
+    }
 
     public static void setF(Facade f) {
         OptionsController.f = f;
@@ -170,7 +170,7 @@ public class OptionsController implements Initializable {
             String data[] = {number1,number2};
             System.out.println("Number 1:  " + number1);//????
             System.out.println("Number 2: " + number2);//???
-            getF().addRecord(getF().getTitleRecords().get(titleRecordID).toString_(), data);//do poprawy!!!!
+            getF().addRecord(getF().searchTitleRecod(Integer.toString(titleRecordID)).toString_(), data);//do poprawy!!!!//poprawione  chyba
         }
 
     }
