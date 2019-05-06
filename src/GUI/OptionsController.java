@@ -1,5 +1,6 @@
 package GUI;
 
+import Model.ClientM;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,16 +21,16 @@ import subbusinesstier.Facade;
 
 
 public class OptionsController implements Initializable {
-  private static Facade f;
+ // private static Facade f;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     f = new Facade();
     }
 
-    public static Facade getF() {
-        return f;
-    }
+   // public static Facade getF() {
+    //    return f;
+    //}
 
     public static void setF(Facade f) {
         OptionsController.f = f;
@@ -130,7 +131,7 @@ public class OptionsController implements Initializable {
             data[2] = password;
             data[3] = id;
             
-            f.addClient(data);
+            getF().addClient(data);//OK
 
         }
 
@@ -167,9 +168,9 @@ public class OptionsController implements Initializable {
             number1 = xField.getText();
             number2 = yField.getText();
             String data[] = {number1,number2};
-            System.out.println("Number 1:  " + number1);
-            System.out.println("Number 2: " + number2);
-            f.addRecord(f.getTitleRecords().get(titleRecordID).toString_(), data);
+            System.out.println("Number 1:  " + number1);//????
+            System.out.println("Number 2: " + number2);//???
+            getF().addRecord(getF().getTitleRecords().get(titleRecordID).toString_(), data);//do poprawy!!!!
         }
 
     }
@@ -229,8 +230,8 @@ public class OptionsController implements Initializable {
             id = idField.getText();
             
             String data[] = {"3",id,title,author,genre,cast};
-            f.addTitleRecord(data);
-            System.out.println(id + title + author + genre + cast);
+            getF().addTitleRecord(data);
+            System.out.println(id + title + author + genre + cast);//???
         }
 
     }
@@ -246,7 +247,7 @@ public class OptionsController implements Initializable {
                 "Please enter client ID", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
             clientId = Integer.valueOf(xField.getText());
-            System.out.println("ID:  " + clientId);
+            System.out.println("ID:  " + clientId);//????
             //TODO
 
         }
@@ -310,7 +311,8 @@ public class OptionsController implements Initializable {
         if (result == JOptionPane.OK_OPTION) {
             titleRecordId = Integer.valueOf(xField.getText());
             System.out.println("ID:  " + xField.getText());
-            f.getTitleRecords().remove(titleRecordId);
+            getF().getTitleRecords().remove(titleRecordId);//poprawa!!!!
+            
         }
     }
 
@@ -325,8 +327,7 @@ public class OptionsController implements Initializable {
                 "Please enter client ID", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
             clientId = Integer.valueOf(xField.getText());
-            System.out.println("ID:  " + clientId);
-            //TODO
+            System.out.println(getF().searchClient(clientId).toString());///poprawa!!!
 
         }
     }
@@ -343,8 +344,7 @@ public class OptionsController implements Initializable {
         if (result == JOptionPane.OK_OPTION) {
             recordId = Integer.valueOf(xField.getText());
             System.out.println("ID:  " + recordId);
-            //TODO
-           
+            //TODO           
         }
     }
 
@@ -367,16 +367,15 @@ public class OptionsController implements Initializable {
     @FXML
     void btn_searchTitleRecord_onAction(ActionEvent event) {
         JTextField xField = new JTextField(5);
-        int titleRecordId;
+        String titleRecordId;
         JPanel myPanel = new JPanel();
         myPanel.add(new JLabel("TitleRecord ID:"));
         myPanel.add(xField);
         int result = JOptionPane.showConfirmDialog(null, myPanel,
                 "Please enter title record ID", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
-            titleRecordId = Integer.parseInt(xField.getText());
-            System.out.println("ID:  " + titleRecordId);
-            //TODO
+            titleRecordId = xField.getText();
+            System.out.println(getF().searchTitleRecod(titleRecordId).toString());
         }
     }
 
