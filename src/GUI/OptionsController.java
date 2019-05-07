@@ -1,5 +1,6 @@
 package GUI;
 
+import static GUI.Main.getFacade;
 import Model.ClientM;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
@@ -17,25 +18,12 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
-import subbusinesstier.Facade;
 
 
 public class OptionsController implements Initializable {
-  private static Facade f;
-    
-    @Override
+  @Override
     public void initialize(URL location, ResourceBundle resources) {
-    f = new Facade();
     }
-
-    public static Facade getF() {
-        return f;
-    }
-
-    public static void setF(Facade f) {
-        OptionsController.f = f;
-    }
-
    
     @FXML
     private MenuItem menuItem_Close;
@@ -126,12 +114,13 @@ public class OptionsController implements Initializable {
             System.out.println("Login:  " + login);
             System.out.println("CardNumber: " + cardNumber);
             System.out.println("Password: "+ password);
-            data[0] = login;
-            data[1] = cardNumber;
-            data[2] = password;
-            data[3] = id;
+            data[0] = cardNumber;
+            data[1] = login;
+            data[2] = id;
+            data[3] = password;
             
-            getF().addClient(data);//OK
+            
+            Main.getFacade().addClient(data);//OK
 
         }
 
@@ -143,7 +132,7 @@ public class OptionsController implements Initializable {
 
         JTextField xField = new JTextField(5);
         JTextField yField = new JTextField(5);
-        JComboBox choiceBox = new JComboBox(f.getTitleRecords().toArray());
+        JComboBox choiceBox = new JComboBox(Main.getFacade().getTitleRecords().toArray());
        
         int titleRecordID;
         String number1;
@@ -170,7 +159,7 @@ public class OptionsController implements Initializable {
             String data[] = {number1,number2};
             System.out.println("Number 1:  " + number1);//????
             System.out.println("Number 2: " + number2);//???
-            getF().addRecord(getF().searchTitleRecod(Integer.toString(titleRecordID)).toString_(), data);//do poprawy!!!!//poprawione  chyba
+            Main.getFacade().addRecord(Main.getFacade().searchTitleRecod(Integer.toString(titleRecordID)).toString_(), data);//do poprawy!!!!//poprawione  chyba
         }
 
     }
@@ -230,7 +219,7 @@ public class OptionsController implements Initializable {
             id = idField.getText();
             
             String data[] = {"3",id,title,author,genre,cast};
-            getF().addTitleRecord(data);
+            Main.getFacade().addTitleRecord(data);
             System.out.println(id + title + author + genre + cast);//???
         }
 
@@ -311,7 +300,7 @@ public class OptionsController implements Initializable {
         if (result == JOptionPane.OK_OPTION) {
             titleRecordId = Integer.valueOf(xField.getText());
             System.out.println("ID:  " + xField.getText());
-            getF().getTitleRecords().remove(titleRecordId);//poprawa!!!!
+            Main.getFacade().getTitleRecords().remove(titleRecordId);//poprawa!!!!
             
         }
     }
@@ -327,7 +316,7 @@ public class OptionsController implements Initializable {
                 "Please enter client ID", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
             clientId = Integer.valueOf(xField.getText());
-            System.out.println(getF().searchClient(clientId).toString());///poprawa!!!
+            System.out.println(Main.getFacade().searchClient(clientId).toString());///poprawa!!!
 
         }
     }
@@ -367,6 +356,7 @@ public class OptionsController implements Initializable {
     @FXML
     void btn_searchTitleRecord_onAction(ActionEvent event) {
         JTextField xField = new JTextField(5);
+        JComboBox Box ;
         String titleRecordId;
         JPanel myPanel = new JPanel();
         myPanel.add(new JLabel("TitleRecord ID:"));
@@ -375,7 +365,9 @@ public class OptionsController implements Initializable {
                 "Please enter title record ID", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
             titleRecordId = xField.getText();
-            System.out.println(getF().searchTitleRecod(titleRecordId).toString());
+            Box = new JComboBox();
+            Box.addItem(Main.getFacade().searchTitleRecod(titleRecordId).toString());
+           
         }
     }
 
@@ -394,6 +386,11 @@ public class OptionsController implements Initializable {
         int confirmed = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit?", "Close application", JOptionPane.YES_NO_OPTION);
         if (confirmed == JOptionPane.YES_OPTION) System.exit(0);
     }
+
+//    @Override
+//    public void initialize(URL location, ResourceBundle resources) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
     
 }

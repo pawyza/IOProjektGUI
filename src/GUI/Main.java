@@ -5,9 +5,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import subbusinesstier.Facade;
 
 public class Main extends Application {
+    static Facade facade = new Facade();
 
+    public static Facade getFacade() {
+        return facade;
+    }
+
+    public static void setFacade(Facade facade) {
+        Main.facade = facade;
+    }
     static Stage stg;
     @Override
     public void start(Stage primaryStage) throws Exception{

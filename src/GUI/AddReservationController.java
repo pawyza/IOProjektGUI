@@ -3,6 +3,7 @@ package GUI;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 
 import javafx.event.ActionEvent;
@@ -10,7 +11,9 @@ import javafx.fxml.FXML;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import subbusinesstier.entities.Client;
@@ -19,12 +22,9 @@ import subbusinesstier.entities.TitleRecord;
 
 
 public class AddReservationController implements Initializable {
-     ///static Facade f = OptionsController.f; 
 
-     @FXML
     private JFXComboBox<TitleRecord> comboBox_Record;
 
-    @FXML
     private JFXComboBox<Client> comboBox_Client;
 
     @FXML
@@ -34,6 +34,10 @@ public class AddReservationController implements Initializable {
     private JFXDatePicker datePicker_End;
     private String datestringBegin;
     private String datestringEnd;
+    @FXML
+    private JFXTextField edit_ScreeningRoomID;
+    @FXML
+    private JFXTextField edit_Price;
 
 
     @FXML
@@ -41,7 +45,7 @@ public class AddReservationController implements Initializable {
         
         OptionsController.recordStage.close();
         //TODO METODA TOSTRING_()
-        //f.addReservation(comboBox_Record.getValue().toString_(),comboBox_Client.getValue().toString_(), datePicker_Begin.getValue());
+        //Main.getFacade().addReservation(comboBox_Record.getValue().toString_(),comboBox_Client.getValue().toString_(), datePicker_Begin.getValue());
     }
 
     @FXML
@@ -59,11 +63,20 @@ public class AddReservationController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList temp = (ObservableList)OptionsController.getF().getClients();
-     
-       comboBox_Client.setItems(temp);
-        temp = (ObservableList)OptionsController.getF().getTitleRecords();
-        comboBox_Record.setItems(temp);
+        List temp = Main.getFacade().getClients();
+        ObservableList observableArrayList = FXCollections.observableArrayList(temp);
+       comboBox_Client.setItems(observableArrayList);
+        temp = Main.getFacade().getTitleRecords();
+        observableArrayList = FXCollections.observableArrayList(temp);
+        comboBox_Record.setItems(observableArrayList);
+    }
+
+    @FXML
+    private void datePicker_End_OnAction(ActionEvent event) {
+        if(datePicker_End.getValue().isAfter(datePicker_Begin.getValue())){
+            datestringEnd = datePicker_End.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        }
+         System.out.println(datestringEnd);
     }
 
 
