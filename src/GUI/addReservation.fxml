@@ -7,14 +7,16 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.ComboBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <AnchorPane prefHeight="300.0" prefWidth="500.0" stylesheets="@../Resources/Theme.css" xmlns="http://javafx.com/javafx/8.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AddReservationController">
    <children>
       <HBox layoutX="81.0" layoutY="49.0" prefHeight="202.0" prefWidth="339.0" spacing="80.0" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="49.0">
          <children>
             <VBox alignment="CENTER" prefHeight="206.0" prefWidth="229.0" spacing="30.0">
                <children>
-                  <JFXTextField fx:id="edit_ScreeningRoomID" promptText="Record" />
-                  <JFXTextField fx:id="edit_Price" promptText="Client" />
+                  <JFXComboBox fx:id="comboBox_Record" layoutX="95.0" layoutY="40.0" prefWidth="150.0" />
+                  <JFXComboBox fx:id="comboBox_Client" layoutX="95.0" layoutY="90.0" prefWidth="150.0" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="202.0" prefWidth="168.0" spacing="30.0">
@@ -25,7 +27,7 @@
             </VBox>
          </children>
       </HBox>
-      <JFXButton layoutX="116.0" layoutY="252.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#btn_OK_OnAction" prefHeight="26.0" prefWidth="75.0" text="Confirm" AnchorPane.bottomAnchor="21.599999999999966" AnchorPane.leftAnchor="116.0" AnchorPane.rightAnchor="308.8" AnchorPane.topAnchor="252.0" />
-      <JFXButton layoutX="288.0" layoutY="252.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#btn_Return_OnAction" prefHeight="26.0" prefWidth="75.0" text="Return" AnchorPane.bottomAnchor="21.6" AnchorPane.leftAnchor="288.0" AnchorPane.rightAnchor="136.8" AnchorPane.topAnchor="252.0" />
+      <JFXButton layoutX="116.0" layoutY="260.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#btn_OK_OnAction" prefHeight="26.0" prefWidth="75.0" text="Confirm" AnchorPane.bottomAnchor="21.599999999999966" AnchorPane.leftAnchor="116.0" AnchorPane.rightAnchor="308.8" AnchorPane.topAnchor="270.0" />
+      <JFXButton layoutX="288.0" layoutY="260.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#btn_Return_OnAction" prefHeight="26.0" prefWidth="75.0" text="Return" AnchorPane.bottomAnchor="21.6" AnchorPane.leftAnchor="288.0" AnchorPane.rightAnchor="136.8" AnchorPane.topAnchor="270.0" />
    </children>
 </AnchorPane>

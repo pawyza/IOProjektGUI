@@ -1,7 +1,6 @@
 package GUI;
 
-import static GUI.Main.getFacade;
-import Model.ClientM;
+
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,18 +12,25 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 
-public class OptionsController implements Initializable {
-  @Override
+
+public class OptionsController extends JPanel implements ActionListener, Initializable {
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
-   
+
     @FXML
     private MenuItem menuItem_Close;
 
@@ -90,7 +96,7 @@ public class OptionsController implements Initializable {
         String cardNumber;
         String id;
         String data[] = new String[4];
-        
+
         JPanel myPanel = new JPanel();
         myPanel.add(new JLabel("ID:"));
         myPanel.add(idField);
@@ -118,8 +124,8 @@ public class OptionsController implements Initializable {
             data[1] = login;
             data[2] = id;
             data[3] = password;
-            
-            
+
+
             Main.getFacade().addClient(data);//OK
 
         }
@@ -127,39 +133,41 @@ public class OptionsController implements Initializable {
 
     }
 
+
+
+
     @FXML
     void btn_addRecord_onAction(ActionEvent event) throws IOException {
 
-        JTextField xField = new JTextField(5);
+
         JTextField yField = new JTextField(5);
-        JComboBox choiceBox = new JComboBox(Main.getFacade().getTitleRecords().toArray());
-       
-        int titleRecordID;
+        JComboBox choiceBox = new JComboBox(Main.getFacade().getTitleRecordsModel().toArray());
+
         String number1;
         String number2;
-       
-       
-        
+
+
+
         JPanel myPanel = new JPanel();
-        
+
         myPanel.add(choiceBox);
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-        myPanel.add(new JLabel("Number 1:"));
-        myPanel.add(xField);
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(Box.createHorizontalStrut(15));
+
+        myPanel.add(Box.createHorizontalStrut(15));
         myPanel.add(new JLabel("Number 2 :"));
         myPanel.add(yField);
 
         int result = JOptionPane.showConfirmDialog(null, myPanel,
                 "Please enter data 1 and data 2 ", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
-            titleRecordID = choiceBox.getSelectedIndex();
-            number1 = xField.getText();
+            int selectedIndex = choiceBox.getSelectedIndex();
+            number1 = Integer.toString(0);
             number2 = yField.getText();
             String data[] = {number1,number2};
             System.out.println("Number 1:  " + number1);//????
             System.out.println("Number 2: " + number2);//???
-            Main.getFacade().addRecord(Main.getFacade().searchTitleRecod(Integer.toString(titleRecordID)).toString_(), data);//do poprawy!!!!//poprawione  chyba
+            System.out.println(Main.getFacade().transformTittleRecordToString(selectedIndex));
+            Main.getFacade().addRecord( Main.getFacade().transformTittleRecordToString(selectedIndex), data);
         }
 
     }
@@ -184,7 +192,7 @@ public class OptionsController implements Initializable {
         JTextField idField = new JTextField(5);
         JTextField genreField = new JTextField(5);
         JTextField castField = new JTextField(5);
-        
+
         String title;
         String author;
         String id;
@@ -207,8 +215,8 @@ public class OptionsController implements Initializable {
         myPanel.add(new JLabel("Cast:"));
         myPanel.add(Box.createHorizontalStrut(15)); // a spacer
         myPanel.add(castField);
-        
-        
+
+
         int result = JOptionPane.showConfirmDialog(null, myPanel,
                 "Please enter TitleRecord parameters", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
@@ -217,7 +225,7 @@ public class OptionsController implements Initializable {
             genre = genreField.getText();
             cast = castField.getText();
             id = idField.getText();
-            
+
             String data[] = {"3",id,title,author,genre,cast};
             Main.getFacade().addTitleRecord(data);
             System.out.println(id + title + author + genre + cast);//???
@@ -237,7 +245,8 @@ public class OptionsController implements Initializable {
         if (result == JOptionPane.OK_OPTION) {
             clientId = Integer.valueOf(xField.getText());
             System.out.println("ID:  " + clientId);//????
-            //TODO
+            Main.getFacade().deleteClient(clientId);
+
 
         }
     }
@@ -253,21 +262,23 @@ public class OptionsController implements Initializable {
                 "Please enter record ID", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
             recordId = Integer.valueOf(xField.getText());
+
             System.out.println("ID:  " + recordId);
-            //TODO
-           
-          
+            Main.getFacade().deleteRecord(recordId);
+
+
+
         }
     }
 
     @FXML
     void btn_deleteReservation_onAction(ActionEvent event) {
-        
+
         JTextField xField = new JTextField(5);
         JTextField yField = new JTextField(5);
         int reservationId;
         int clientId;
-        
+
         JPanel myPanel = new JPanel();
         myPanel.add(new JLabel("Client ID:"));
         myPanel.add(xField);
@@ -277,13 +288,13 @@ public class OptionsController implements Initializable {
         int result = JOptionPane.showConfirmDialog(null, myPanel,
                 "Please enter reservation information", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
-            
+
             clientId = Integer.valueOf(xField.getText());
             clientId = Integer.valueOf(xField.getText());
             //TODO GET RESERVATION
-            
-            
-            
+
+
+
 
         }
     }
@@ -300,8 +311,8 @@ public class OptionsController implements Initializable {
         if (result == JOptionPane.OK_OPTION) {
             titleRecordId = Integer.valueOf(xField.getText());
             System.out.println("ID:  " + xField.getText());
-            Main.getFacade().getTitleRecords().remove(titleRecordId);//poprawa!!!!
-            
+            Main.getFacade().deleteTitleRecord(Integer.toString(titleRecordId));//poprawa!!!!
+
         }
     }
 
@@ -325,15 +336,18 @@ public class OptionsController implements Initializable {
     void btn_searchRecord_onAction(ActionEvent event) {
         JTextField xField = new JTextField(5);
         int recordId;
+        JComboBox choiceBox = new JComboBox(Main.getFacade().getTitleRecordsModel().toArray());
         JPanel myPanel = new JPanel();
-        myPanel.add(new JLabel("Record ID:"));
-        myPanel.add(xField);
+        myPanel.add(choiceBox);
+        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
         int result = JOptionPane.showConfirmDialog(null, myPanel,
                 "Please enter record ID", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
-            recordId = Integer.valueOf(xField.getText());
-            System.out.println("ID:  " + recordId);
-            //TODO           
+            int selectedIndex = choiceBox.getSelectedIndex();
+            String[] tittleRecord = Main.getFacade().transformTittleRecordToString(selectedIndex);
+            Main.getFacade().searchRecordsOfTitle(tittleRecord);
+            System.out.println(Main.getFacade().searchRecordsOfTitle(tittleRecord));
         }
     }
 
@@ -367,7 +381,7 @@ public class OptionsController implements Initializable {
             titleRecordId = xField.getText();
             Box = new JComboBox();
             Box.addItem(Main.getFacade().searchTitleRecod(titleRecordId).toString());
-           
+
         }
     }
 
@@ -387,10 +401,11 @@ public class OptionsController implements Initializable {
         if (confirmed == JOptionPane.YES_OPTION) System.exit(0);
     }
 
-//    @Override
-//    public void initialize(URL location, ResourceBundle resources) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
 
-    
+    @Override
+    public void actionPerformed(java.awt.event.ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
 }
