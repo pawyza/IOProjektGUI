@@ -37,16 +37,14 @@
             <VBox alignment="CENTER" prefHeight="147.0" prefWidth="181.0" spacing="10.0">
                <children>
                   <JFXButton fx:id="btn_searchRecord" buttonType="RAISED" onAction="#btn_searchRecord_onAction" prefHeight="26.0" prefWidth="226.0" text="Search Record" />
-                  <JFXButton fx:id="btn_searchTitleRecord" buttonType="RAISED" onAction="#btn_searchTitleRecord_onAction" prefHeight="26.0" prefWidth="201.0" text="Search TitleRecord" />
-                  <JFXButton fx:id="btn_searchClient" buttonType="RAISED" onAction="#btn_searchClient_onAction" prefHeight="26.0" prefWidth="229.0" text="Search Client" />
+                  <JFXButton fx:id="btn_searchDeleteTitleRecord" buttonType="RAISED" onAction="#btn_searchDeleteTitleRecord_onAction" prefHeight="26.0" prefWidth="201.0" text="Search/Delete TitleRecord" />
+                  <JFXButton fx:id="btn_searchDeleteClient" buttonType="RAISED" onAction="#btn_searchDeleteClient_onAction" prefHeight="26.0" prefWidth="300.0" text="Search/Delete Client" />
                   <JFXButton fx:id="btn_searchReservation" buttonType="RAISED" onAction="#btn_searchReservation_onAction" prefHeight="26.0" prefWidth="192.0" text="Search Reservation" />
                </children>
             </VBox>
             <VBox alignment="CENTER" spacing="10.0">
                <children>
                   <JFXButton fx:id="btn_deleteRecord" buttonType="RAISED" onAction="#btn_deleteRecord_onAction" prefHeight="26.0" prefWidth="154.0" text="Delete Record" />
-                  <JFXButton fx:id="btn_deleteTitleRecord" buttonType="RAISED" onAction="#btn_deleteTitleRecord_onAction" prefHeight="26.0" prefWidth="154.0" text="Delete TitleRecord" />
-                  <JFXButton fx:id="btn_deleteClient" buttonType="RAISED" onAction="#btn_deleteClient_onAction" prefHeight="26.0" prefWidth="154.0" text="Delete Client" />
                   <JFXButton fx:id="btn_deleteReservation" buttonType="RAISED" onAction="#btn_deleteReservation_onAction" prefHeight="26.0" prefWidth="154.0" text="Delete Reservation" />
                </children>
             </VBox>

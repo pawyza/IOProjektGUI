@@ -15,6 +15,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="206.0" prefWidth="229.0" spacing="30.0">
                <children>
+                  <JFXTextField fx:id="numberOfReservation" promptText="Number" />
                   <JFXComboBox fx:id="comboBox_Record" layoutX="95.0" layoutY="40.0" prefWidth="150.0" />
                   <JFXComboBox fx:id="comboBox_Client" layoutX="95.0" layoutY="90.0" prefWidth="150.0" />
                </children>

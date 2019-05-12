@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Vector;
 import javafx.fxml.Initializable;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -53,10 +54,10 @@ public class OptionsController extends JPanel implements ActionListener, Initial
     private JFXButton btn_searchRecord;
 
     @FXML
-    private JFXButton btn_searchTitleRecord;
+    private JFXButton btn_searchDeleteTitleRecord;
 
     @FXML
-    private JFXButton btn_searchClient;
+    private JFXButton btn_searchDeleteClient;
 
     @FXML
     private JFXButton btn_searchReservation;
@@ -64,11 +65,6 @@ public class OptionsController extends JPanel implements ActionListener, Initial
     @FXML
     private JFXButton btn_deleteRecord;
 
-    @FXML
-    private JFXButton btn_deleteTitleRecord;
-
-    @FXML
-    private JFXButton btn_deleteClient;
 
     @FXML
     private JFXButton btn_deleteReservation;
@@ -86,7 +82,8 @@ public class OptionsController extends JPanel implements ActionListener, Initial
 
 
     @FXML
-    void btn_addClient_onAction(ActionEvent event) {
+    void btn_addClient_onAction(ActionEvent event) throws IOException {
+       
         JTextField xField = new JTextField(5);
         JTextField yField = new JTextField(5);
         JTextField idField = new JTextField(5);
@@ -124,9 +121,7 @@ public class OptionsController extends JPanel implements ActionListener, Initial
             data[1] = login;
             data[2] = id;
             data[3] = password;
-
-
-            Main.getFacade().addClient(data);//OK
+            Main.getFacade().addClient(data);
 
         }
 
@@ -141,7 +136,7 @@ public class OptionsController extends JPanel implements ActionListener, Initial
 
 
         JTextField yField = new JTextField(5);
-        JComboBox choiceBox = new JComboBox(Main.getFacade().getTitleRecordsModel().toArray());
+        JComboBox choiceBox = new JComboBox(Main.getFacade().getTitleRecordsListModel().toArray());
 
         String number1;
         String number2;
@@ -202,18 +197,18 @@ public class OptionsController extends JPanel implements ActionListener, Initial
         JPanel myPanel = new JPanel();
         myPanel.add(new JLabel("Number:"));
         myPanel.add(idField);
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(Box.createHorizontalStrut(15)); 
         myPanel.add(new JLabel("Title:"));
         myPanel.add(titleField);
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(Box.createHorizontalStrut(15)); 
         myPanel.add(new JLabel("Author:"));
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(Box.createHorizontalStrut(15)); 
         myPanel.add(authorField);
         myPanel.add(new JLabel("Genre:"));
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(Box.createHorizontalStrut(15)); 
         myPanel.add(genreField);
         myPanel.add(new JLabel("Cast:"));
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(Box.createHorizontalStrut(15)); 
         myPanel.add(castField);
 
 
@@ -233,24 +228,7 @@ public class OptionsController extends JPanel implements ActionListener, Initial
 
     }
 
-    @FXML
-    void btn_deleteClient_onAction(ActionEvent event) {
-        JTextField xField = new JTextField(5);
-        int clientId;
-        JPanel myPanel = new JPanel();
-        myPanel.add(new JLabel("Client ID:"));
-        myPanel.add(xField);
-        int result = JOptionPane.showConfirmDialog(null, myPanel,
-                "Please enter client ID", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION) {
-            clientId = Integer.valueOf(xField.getText());
-            System.out.println("ID:  " + clientId);//????
-            Main.getFacade().deleteClient(clientId);
-
-
-        }
-    }
-
+    
     @FXML
     void btn_deleteRecord_onAction(ActionEvent event) {
         JTextField xField = new JTextField(5);
@@ -275,72 +253,59 @@ public class OptionsController extends JPanel implements ActionListener, Initial
     void btn_deleteReservation_onAction(ActionEvent event) {
 
         JTextField xField = new JTextField(5);
-        JTextField yField = new JTextField(5);
+        
         int reservationId;
-        int clientId;
 
         JPanel myPanel = new JPanel();
-        myPanel.add(new JLabel("Client ID:"));
+        myPanel.add(new JLabel("Reservation ID:"));
         myPanel.add(xField);
         myPanel.add(Box.createHorizontalStrut(15));
-        myPanel.add(new JLabel("Reservation ID:"));
-        myPanel.add(yField);
+        
         int result = JOptionPane.showConfirmDialog(null, myPanel,
                 "Please enter reservation information", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
 
-            clientId = Integer.valueOf(xField.getText());
-            clientId = Integer.valueOf(xField.getText());
-            //TODO GET RESERVATION
-
-
-
+            reservationId = Integer.valueOf(xField.getText());
+            Main.getFacade().deleteReservation(reservationId);
+          
 
         }
     }
 
     @FXML
-    void btn_deleteTitleRecord_onAction(ActionEvent event) {
-        JTextField xField = new JTextField(5);
-        int titleRecordId;
-        JPanel myPanel = new JPanel();
-        myPanel.add(new JLabel("TitleRecord ID:"));
-        myPanel.add(xField);
-        int result = JOptionPane.showConfirmDialog(null, myPanel,
-                "Please enter title record ID", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION) {
-            titleRecordId = Integer.valueOf(xField.getText());
-            System.out.println("ID:  " + xField.getText());
-            Main.getFacade().deleteTitleRecord(Integer.toString(titleRecordId));//poprawa!!!!
+    void btn_searchDeleteTitleRecord_onAction(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(AddReservationController.class.getResource("SearchDeleteTitleRecord.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+        stage.setTitle("Rental");
+        stage.setResizable(false);
+        this.recordStage = stage;
 
-        }
+        
     }
 
     @FXML
-    void btn_searchClient_onAction(ActionEvent event) {
-        JTextField xField = new JTextField(5);
-        int clientId;
-        JPanel myPanel = new JPanel();
-        myPanel.add(new JLabel("Client ID:"));
-        myPanel.add(xField);
-        int result = JOptionPane.showConfirmDialog(null, myPanel,
-                "Please enter client ID", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION) {
-            clientId = Integer.valueOf(xField.getText());
-            System.out.println(Main.getFacade().searchClient(clientId).toString());///poprawa!!!
-
-        }
+    void btn_searchDeleteClient_onAction(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(AddReservationController.class.getResource("SearchDeleteClients.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+        stage.setTitle("Rental");
+        stage.setResizable(false);
+        this.recordStage = stage;
     }
 
     @FXML
     void btn_searchRecord_onAction(ActionEvent event) {
-        JTextField xField = new JTextField(5);
-        int recordId;
-        JComboBox choiceBox = new JComboBox(Main.getFacade().getTitleRecordsModel().toArray());
+      
+        JComboBox choiceBox = new JComboBox(Main.getFacade().getTitleRecordsListModel().toArray());
         JPanel myPanel = new JPanel();
         myPanel.add(choiceBox);
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(Box.createHorizontalStrut(15));
+        myPanel.add(Box.createHorizontalStrut(15)); 
         int result = JOptionPane.showConfirmDialog(null, myPanel,
                 "Please enter record ID", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
@@ -363,27 +328,11 @@ public class OptionsController extends JPanel implements ActionListener, Initial
         if (result == JOptionPane.OK_OPTION) {
             reservationID = Integer.valueOf(xField.getText());
             System.out.println("ID:  " + reservationID);
-            //TODO
+            Main.getFacade().searchClientOfReservation(reservationID);
         }
     }
 
-    @FXML
-    void btn_searchTitleRecord_onAction(ActionEvent event) {
-        JTextField xField = new JTextField(5);
-        JComboBox Box ;
-        String titleRecordId;
-        JPanel myPanel = new JPanel();
-        myPanel.add(new JLabel("TitleRecord ID:"));
-        myPanel.add(xField);
-        int result = JOptionPane.showConfirmDialog(null, myPanel,
-                "Please enter title record ID", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION) {
-            titleRecordId = xField.getText();
-            Box = new JComboBox();
-            Box.addItem(Main.getFacade().searchTitleRecod(titleRecordId).toString());
-
-        }
-    }
+    
 
     @FXML
     void menuItem_About_OnAction(ActionEvent event) {

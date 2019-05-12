@@ -22,30 +22,29 @@ import subbusinesstier.entities.TitleRecord;
 
 
 public class AddReservationController implements Initializable {
-
+    @FXML
     private JFXComboBox<TitleRecord> comboBox_Record;
-
+    @FXML
     private JFXComboBox<Client> comboBox_Client;
 
     @FXML
     private JFXDatePicker datePicker_Begin;
 
     @FXML
+    private JFXTextField numberOfReservation;
+    @FXML
     private JFXDatePicker datePicker_End;
     private String datestringBegin;
     private String datestringEnd;
-    @FXML
-    private JFXTextField edit_ScreeningRoomID;
-    @FXML
-    private JFXTextField edit_Price;
+    
 
 
     @FXML
     void btn_OK_OnAction(ActionEvent event) {
         
         OptionsController.recordStage.close();
-        //TODO METODA TOSTRING_()
-        //Main.getFacade().addReservation(comboBox_Record.getValue().toString_(),comboBox_Client.getValue().toString_(), datePicker_Begin.getValue());
+        
+        Main.getFacade().addReservation(comboBox_Record.getValue().toString_(),comboBox_Client.getValue().toString_(),Integer.parseInt(numberOfReservation.getText()),datePicker_Begin.getValue(),datePicker_End.getValue());
     }
 
     @FXML
@@ -63,10 +62,12 @@ public class AddReservationController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+      
+        
         List temp = Main.getFacade().getClientsModel();
         ObservableList observableArrayList = FXCollections.observableArrayList(temp);
-       comboBox_Client.setItems(observableArrayList);
-        temp = Main.getFacade().getTitleRecordsModel();
+        comboBox_Client.setItems(observableArrayList);
+        temp = Main.getFacade().getRecordsModel();
         observableArrayList = FXCollections.observableArrayList(temp);
         comboBox_Record.setItems(observableArrayList);
     }
