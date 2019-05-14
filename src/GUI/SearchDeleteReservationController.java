@@ -29,6 +29,7 @@ public class SearchDeleteReservationController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
        
         List temp = Main.getFacade().getReservationList();
+        Main.getFacade().getReservationList();
         ObservableList<String[]> list = FXCollections.observableArrayList(temp);
         
 

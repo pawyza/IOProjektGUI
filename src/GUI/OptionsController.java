@@ -193,7 +193,8 @@ public class OptionsController extends JPanel implements ActionListener, Initial
         String id;
         String genre;
         String cast;
-
+        String type;
+        
         JPanel myPanel = new JPanel();
         myPanel.add(new JLabel("Number:"));
         myPanel.add(idField);
@@ -211,6 +212,16 @@ public class OptionsController extends JPanel implements ActionListener, Initial
         myPanel.add(Box.createHorizontalStrut(15)); 
         myPanel.add(castField);
 
+        if(genreField == null){
+            type = "2";
+        }else if(genreField == null && castField == null){
+            type="1";
+        }else if(authorField == null && genreField == null && castField == null){
+            type="0";
+        }else{
+            type="3";
+        }
+        
 
         int result = JOptionPane.showConfirmDialog(null, myPanel,
                 "Please enter TitleRecord parameters", JOptionPane.OK_CANCEL_OPTION);
@@ -221,7 +232,7 @@ public class OptionsController extends JPanel implements ActionListener, Initial
             cast = castField.getText();
             id = idField.getText();
 
-            String data[] = {"3",id,title,author,genre,cast};
+            String data[] = {type,id,title,author,genre,cast};
             Main.getFacade().addTitleRecord(data);
             System.out.println(id + title + author + genre + cast);//???
         }
