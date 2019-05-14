@@ -21,7 +21,7 @@ public class SearchDeleteClients implements  Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        List temp = Main.getFacade().getClients();
+        List temp = Main.getFacade().getClientList();
 
         ObservableList<String[]> list = FXCollections.observableArrayList(temp);
         ClientsTable.setItems(list);
@@ -64,7 +64,7 @@ public class SearchDeleteClients implements  Initializable {
             int selIndex = ClientsTable.getSelectionModel().getSelectedIndex();
             Main.getFacade().deleteClient(Main.getFacade().transformClientIndexToNumber(selIndex));
             
-                    List temp = Main.getFacade().getClientsModel();
+                    List temp = Main.getFacade().getClientList();
             ObservableList<String[]> list = FXCollections.observableArrayList(temp);
         ClientsTable.setItems(list);
     }

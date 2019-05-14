@@ -28,40 +28,38 @@ public class SearchDeleteRecordController implements Initializable {
    @Override
     public void initialize(URL location, ResourceBundle resources) {
         
-        List temp = Main.getFacade().getRecordsModel();
+        List temp = Main.getFacade().getRecordsList();
         System.out.println(temp.get(0));
         ObservableList<String[]> list = FXCollections.observableArrayList(temp);
         RecordTable.setItems(list);
 
-        TableColumn idCol = new TableColumn("ID");
-        TableColumn idTRCol = new TableColumn("ID TitleRecord");
-        TableColumn titleCol = new TableColumn("Title");
-        TableColumn authorCol = new TableColumn("Author");
-        TableColumn castCol = new TableColumn("Cast");
-        TableColumn genreCol = new TableColumn("Genre");
+        TableColumn titleCol = new TableColumn("title");
+        TableColumn authorCol = new TableColumn("author");
+        TableColumn castCol = new TableColumn("cast");
+        TableColumn genreCol = new TableColumn("genre");
+        TableColumn numberCol = new TableColumn("number");
+      
 
 
-        idCol.setCellValueFactory(
-                new PropertyValueFactory<Object, String>("id")
-        );
-         idTRCol.setCellValueFactory(
-                new PropertyValueFactory<Object, String>("id TitleRecord")
-        );
         titleCol.setCellValueFactory(
-                new PropertyValueFactory<Object, String>("title")
+                new PropertyValueFactory<Object, String>("Title")
         );
         authorCol.setCellValueFactory(
-                new PropertyValueFactory<Object, String>("author")
+                new PropertyValueFactory<Object, String>("Author")
         );
         castCol.setCellValueFactory(
-                new PropertyValueFactory<Object, String>("cast")
+                new PropertyValueFactory<Object, String>("Cast")
         );
         genreCol.setCellValueFactory(
-                new PropertyValueFactory<Object, String>("genre")
+                new PropertyValueFactory<Object, String>("Genre")
         );
+        numberCol.setCellValueFactory(
+                new PropertyValueFactory<Object, String>("Number")
+        );
+       
         
 
-        RecordTable.getColumns().addAll(titleCol,authorCol, idCol ,idTRCol,  castCol,genreCol);
+        RecordTable.getColumns().addAll(titleCol,authorCol, castCol,genreCol,numberCol);
     }
     @FXML
     private TableView<String[]> RecordTable;

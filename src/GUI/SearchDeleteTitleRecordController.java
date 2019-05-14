@@ -27,7 +27,7 @@ public class SearchDeleteTitleRecordController implements  Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
-        List temp = Main.getFacade().getTitleRecords();
+        List temp = Main.getFacade().getTitleRecordsList();
         ObservableList<String[]> list = FXCollections.observableArrayList(temp);
         TableColumn idCol = new TableColumn("ID");
         TableColumn titleCol = new TableColumn("Title");
@@ -73,7 +73,7 @@ public class SearchDeleteTitleRecordController implements  Initializable {
             int selIndex = TitleRecordTable.getSelectionModel().getSelectedIndex();
             Main.getFacade().deleteTitleRecord(Main.getFacade().transformTitleRecordIndexToString(selIndex));
             
-                    List temp = Main.getFacade().getTitleRecords();
+                    List temp = Main.getFacade().getTitleRecordsList();
             ObservableList<String[]> list = FXCollections.observableArrayList(temp);
         TitleRecordTable.setItems(list);
     }
