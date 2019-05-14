@@ -258,37 +258,29 @@ public class OptionsController extends JPanel implements ActionListener, Initial
     }
 
     @FXML
-    void btn_searchDeleteRecord_onAction(ActionEvent event) {
-      
-        JComboBox choiceBox = new JComboBox(Main.getFacade().getTitleRecordsModelString().toArray());
-        JPanel myPanel = new JPanel();
-        myPanel.add(choiceBox);
-        myPanel.add(Box.createHorizontalStrut(15));
-        myPanel.add(Box.createHorizontalStrut(15)); 
-        int result = JOptionPane.showConfirmDialog(null, myPanel,
-                "Please enter record ID", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION) {
-            int selectedIndex = choiceBox.getSelectedIndex();
-            String[] tittleRecord = Main.getFacade().transformTittleRecordToString(selectedIndex);
-            Main.getFacade().searchRecordsOfTitle(tittleRecord);
-            System.out.println(Main.getFacade().searchRecordsOfTitle(tittleRecord));
-        }
+    void btn_searchDeleteRecord_onAction(ActionEvent event) throws IOException {
+       FXMLLoader fxmlLoader = new FXMLLoader(AddReservationController.class.getResource("SearchDeleteRecord.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+        stage.setTitle("Rental");
+        stage.setResizable(false);
+        this.recordStage = stage;
+
     }
 
     @FXML
-    void btn_searchDeleteReservation_onAction(ActionEvent event) {
-        JTextField xField = new JTextField(5);
-        int reservationID;
-        JPanel myPanel = new JPanel();
-        myPanel.add(new JLabel("Reservation ID:"));
-        myPanel.add(xField);
-        int result = JOptionPane.showConfirmDialog(null, myPanel,
-                "Please enter reservation ID", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION) {
-            reservationID = Integer.valueOf(xField.getText());
-            System.out.println("ID:  " + reservationID);
-            Main.getFacade().searchClientsInfoOfReservation(reservationID);
-        }
+    void btn_searchDeleteReservation_onAction(ActionEvent event) throws IOException {
+      FXMLLoader fxmlLoader = new FXMLLoader(AddReservationController.class.getResource("SearchDeleteEReservation.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+        stage.setTitle("Rental");
+        stage.setResizable(false);
+        this.recordStage = stage;
+
     }
 
     

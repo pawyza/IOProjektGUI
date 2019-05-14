@@ -36,10 +36,10 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="147.0" prefWidth="181.0" spacing="10.0">
                <children>
-                  <JFXButton fx:id="btn_searchDeleteRecord" buttonType="RAISED" onAction="#btn_searchDeleteRecord_onAction" prefHeight="26.0" prefWidth="226.0" text="Search Record" />
+                  <JFXButton fx:id="btn_searchDeleteRecord" buttonType="RAISED" onAction="#btn_searchDeleteRecord_onAction" prefHeight="26.0" prefWidth="226.0" text="Search/Delete Record" />
                   <JFXButton fx:id="btn_searchDeleteTitleRecord" buttonType="RAISED" onAction="#btn_searchDeleteTitleRecord_onAction" prefHeight="26.0" prefWidth="201.0" text="Search/Delete TitleRecord" />
                   <JFXButton fx:id="btn_searchDeleteClient" buttonType="RAISED" onAction="#btn_searchDeleteClient_onAction" prefHeight="26.0" prefWidth="300.0" text="Search/Delete Client" />
-                  <JFXButton fx:id="btn_searchDeleteReservation" buttonType="RAISED" onAction="#btn_searchDeleteReservation_onAction" prefHeight="26.0" prefWidth="192.0" text="Search Reservation" />
+                  <JFXButton fx:id="btn_searchDeleteReservation" buttonType="RAISED" onAction="#btn_searchDeleteReservation_onAction" prefHeight="26.0" prefWidth="192.0" text="Search/Delete Reservation" />
                </children>
             </VBox>
          
