@@ -16,16 +16,15 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
-import subbusinesstier.entities.Client;
-import subbusinesstier.entities.TitleRecord;
+
 
 
 
 public class AddReservationController implements Initializable {
     @FXML
-    private JFXComboBox<TitleRecord> comboBox_Record;
+    private JFXComboBox comboBox_Record;
     @FXML
-    private JFXComboBox<Client> comboBox_Client;
+    private JFXComboBox comboBox_Client;
 
     @FXML
     private JFXDatePicker datePicker_Begin;
@@ -41,11 +40,15 @@ public class AddReservationController implements Initializable {
 
     @FXML
     void btn_OK_OnAction(ActionEvent event) {
-        
+         
         OptionsController.recordStage.close();
-        
-        Main.getFacade().addReservation(comboBox_Record.getValue().toString_(),comboBox_Client.getValue().toString_(),Integer.parseInt(numberOfReservation.getText()),datePicker_Begin.getValue(),datePicker_End.getValue());
+        String recordStr = comboBox_Record.getValue().toString();
+        String[] record = new String[]{recordStr};
+         String clientStr = comboBox_Client.getValue().toString();
+        String[] client = new String[]{clientStr};
+        Main.getFacade().addReservation(record,client,Integer.parseInt(numberOfReservation.getText()),datePicker_Begin.getValue(),datePicker_End.getValue());
     }
+
 
     @FXML
     void btn_Return_OnAction(ActionEvent event) {
