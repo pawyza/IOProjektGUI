@@ -135,9 +135,8 @@ public class OptionsController extends JPanel implements ActionListener, Initial
     @FXML
     void btn_addRecord_onAction(ActionEvent event) throws IOException {
 
-
         JTextField yField = new JTextField(5);
-        JComboBox choiceBox = new JComboBox(Main.getFacade().getTitleRecordsModel().toArray());
+        JComboBox choiceBox = new JComboBox(Main.getFacade().getTitleRecordsModelString().toArray());
 
         String number1;
         String number2;
@@ -261,7 +260,7 @@ public class OptionsController extends JPanel implements ActionListener, Initial
     @FXML
     void btn_searchDeleteRecord_onAction(ActionEvent event) {
       
-        JComboBox choiceBox = new JComboBox(Main.getFacade().getTitleRecordsModel().toArray());
+        JComboBox choiceBox = new JComboBox(Main.getFacade().getTitleRecordsModelString().toArray());
         JPanel myPanel = new JPanel();
         myPanel.add(choiceBox);
         myPanel.add(Box.createHorizontalStrut(15));
