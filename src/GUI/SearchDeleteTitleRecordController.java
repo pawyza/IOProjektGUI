@@ -24,7 +24,7 @@ public class SearchDeleteTitleRecordController implements  Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        List temp = Main.getFacade().getTitleRecordsModel();
+        List temp = Main.getFacade().getTitleRecordsModelString();
 
         ObservableList<String[]> list = FXCollections.observableArrayList(temp);
         TitleRecordTable.setItems(list);

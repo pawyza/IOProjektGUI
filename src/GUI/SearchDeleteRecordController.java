@@ -77,8 +77,8 @@ public class SearchDeleteRecordController implements Initializable {
     @FXML
     void deleteButton(ActionEvent event) {
             int selIndex = RecordTable.getSelectionModel().getSelectedIndex();
-           // TODO
-           //Main.getFacade().deleteRecord(Main.getFacade().transformTitleRecordIndexToString(selIndex));// usuwanie record
+          
+           Main.getFacade().deleteRecord(selIndex);// usuwanie record
             
                     List temp = Main.getFacade().getTitleRecords();
             ObservableList<String[]> list = FXCollections.observableArrayList(temp);

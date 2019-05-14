@@ -70,7 +70,7 @@ public class AddReservationController implements Initializable {
         List temp = Main.getFacade().getClientsModel();
         ObservableList observableArrayList = FXCollections.observableArrayList(temp);
         comboBox_Client.setItems(observableArrayList);
-        temp = Main.getFacade().getRecordsModel();
+        temp = Main.getFacade().getTitleRecordsModelString();
         observableArrayList = FXCollections.observableArrayList(temp);
         comboBox_Record.setItems(observableArrayList);
     }
