@@ -36,18 +36,13 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="147.0" prefWidth="181.0" spacing="10.0">
                <children>
-                  <JFXButton fx:id="btn_searchRecord" buttonType="RAISED" onAction="#btn_searchRecord_onAction" prefHeight="26.0" prefWidth="226.0" text="Search Record" />
+                  <JFXButton fx:id="btn_searchDeleteRecord" buttonType="RAISED" onAction="#btn_searchDeleteRecord_onAction" prefHeight="26.0" prefWidth="226.0" text="Search Record" />
                   <JFXButton fx:id="btn_searchDeleteTitleRecord" buttonType="RAISED" onAction="#btn_searchDeleteTitleRecord_onAction" prefHeight="26.0" prefWidth="201.0" text="Search/Delete TitleRecord" />
                   <JFXButton fx:id="btn_searchDeleteClient" buttonType="RAISED" onAction="#btn_searchDeleteClient_onAction" prefHeight="26.0" prefWidth="300.0" text="Search/Delete Client" />
-                  <JFXButton fx:id="btn_searchReservation" buttonType="RAISED" onAction="#btn_searchReservation_onAction" prefHeight="26.0" prefWidth="192.0" text="Search Reservation" />
+                  <JFXButton fx:id="btn_searchDeleteReservation" buttonType="RAISED" onAction="#btn_searchDeleteReservation_onAction" prefHeight="26.0" prefWidth="192.0" text="Search Reservation" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" spacing="10.0">
-               <children>
-                  <JFXButton fx:id="btn_deleteRecord" buttonType="RAISED" onAction="#btn_deleteRecord_onAction" prefHeight="26.0" prefWidth="154.0" text="Delete Record" />
-                  <JFXButton fx:id="btn_deleteReservation" buttonType="RAISED" onAction="#btn_deleteReservation_onAction" prefHeight="26.0" prefWidth="154.0" text="Delete Reservation" />
-               </children>
-            </VBox>
+         
          </children>
       </HBox>
       <JFXButton fx:id="btn_Return" buttonType="RAISED" layoutX="223.0" layoutY="334.0" onAction="#btn_Return_onAction" prefHeight="26.0" prefWidth="154.0" text="Return" AnchorPane.bottomAnchor="39.6" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="222.6" AnchorPane.topAnchor="334.0" />
