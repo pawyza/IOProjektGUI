@@ -28,9 +28,9 @@ public class SearchDeleteReservationController implements Initializable {
    @Override
     public void initialize(URL location, ResourceBundle resources) {
        
-        List temp = Main.getFacade().getReservationModel();
+        List temp = Main.getFacade().getReservationList();
         ObservableList<String[]> list = FXCollections.observableArrayList(temp);
-        ReservationTable.setItems(list);
+        
 
         TableColumn idCol = new TableColumn("Clients ID");
         TableColumn numberCol = new TableColumn("Number");
@@ -41,25 +41,25 @@ public class SearchDeleteReservationController implements Initializable {
 
 
         idCol.setCellValueFactory(
-                new PropertyValueFactory<Object, String>("Clients ID")
+                new PropertyValueFactory<Object, String>("client")
         );
         numberCol.setCellValueFactory(
                 new PropertyValueFactory<Object, String>("number")
         );
         dateStartCol.setCellValueFactory(
-                new PropertyValueFactory<Object, String>("date start")
+                new PropertyValueFactory<Object, String>("dateStart")
         );
         dateEndCol.setCellValueFactory(
-                new PropertyValueFactory<Object, String>("date end")
+                new PropertyValueFactory<Object, String>("dateEnd")
         );
         recordIDCol.setCellValueFactory(
-                new PropertyValueFactory<Object, String>("record id")
+                new PropertyValueFactory<Object, String>("record")
         );
          titleCol.setCellValueFactory(
                 new PropertyValueFactory<Object, String>("title")
         );
         
-
+        ReservationTable.setItems(list);
         ReservationTable.getColumns().addAll(idCol,numberCol, dateStartCol ,dateEndCol,recordIDCol,titleCol);
     }
     @FXML

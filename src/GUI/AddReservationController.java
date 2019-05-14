@@ -43,9 +43,13 @@ public class AddReservationController implements Initializable {
          
         OptionsController.recordStage.close();
         String recordStr = comboBox_Record.getValue().toString();
-        String[] record = new String[]{recordStr};
-         String clientStr = comboBox_Client.getValue().toString();
-        String[] client = new String[]{clientStr};
+        recordStr=recordStr.replace("[","");
+        recordStr=recordStr.replace("]","");
+        String[] record = recordStr.split(",");
+        String clientStr = comboBox_Client.getValue().toString();
+        clientStr=clientStr.replace("[","");
+        clientStr=clientStr.replace("]","");
+        String[] client = clientStr.split(",");
         Main.getFacade().addReservation(record,client,Integer.parseInt(numberOfReservation.getText()),datePicker_Begin.getValue(),datePicker_End.getValue());
     }
 
@@ -70,7 +74,7 @@ public class AddReservationController implements Initializable {
         List temp = Main.getFacade().getClientsModelString();
         ObservableList observableArrayList = FXCollections.observableArrayList(temp);
         comboBox_Client.setItems(observableArrayList);
-        temp = Main.getFacade().getRecordsModelString();
+        temp = Main.getFacade().getTitleRecordsModelString();
         observableArrayList = FXCollections.observableArrayList(temp);
         comboBox_Record.setItems(observableArrayList);
     }
