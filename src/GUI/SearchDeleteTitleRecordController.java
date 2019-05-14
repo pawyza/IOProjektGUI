@@ -9,6 +9,8 @@ import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,18 +26,16 @@ public class SearchDeleteTitleRecordController implements  Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        List temp = Main.getFacade().getTitleRecordsModelString();
-
+        
+        List temp = Main.getFacade().getTitleRecords();
         ObservableList<String[]> list = FXCollections.observableArrayList(temp);
-        TitleRecordTable.setItems(list);
-
         TableColumn idCol = new TableColumn("ID");
         TableColumn titleCol = new TableColumn("Title");
         TableColumn authorCol = new TableColumn("Author");
         TableColumn castCol = new TableColumn("Cast");
         TableColumn genreCol = new TableColumn("Genre");
 
-
+        
         idCol.setCellValueFactory(
                 new PropertyValueFactory<Object, String>("id")
         );
@@ -52,8 +52,9 @@ public class SearchDeleteTitleRecordController implements  Initializable {
                 new PropertyValueFactory<Object, String>("genre")
         );
         
-
+        TitleRecordTable.setItems(list);
         TitleRecordTable.getColumns().addAll(titleCol,authorCol, idCol ,  castCol,genreCol);
+       
     }
     @FXML
     private TableView<String[]> TitleRecordTable;

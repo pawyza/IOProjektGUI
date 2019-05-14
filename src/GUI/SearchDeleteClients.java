@@ -21,7 +21,7 @@ public class SearchDeleteClients implements  Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        List temp = Main.getFacade().getClientsModel();
+        List temp = Main.getFacade().getClients();
 
         ObservableList<String[]> list = FXCollections.observableArrayList(temp);
         ClientsTable.setItems(list);

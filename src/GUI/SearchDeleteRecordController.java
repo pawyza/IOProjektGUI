@@ -27,8 +27,9 @@ public class SearchDeleteRecordController implements Initializable {
 
    @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
         List temp = Main.getFacade().getRecordsModel();
-
+        System.out.println(temp.get(0));
         ObservableList<String[]> list = FXCollections.observableArrayList(temp);
         RecordTable.setItems(list);
 
