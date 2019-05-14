@@ -136,7 +136,7 @@ public class OptionsController extends JPanel implements ActionListener, Initial
 
 
         JTextField yField = new JTextField(5);
-        JComboBox choiceBox = new JComboBox(Main.getFacade().getTitleRecordsListModel().toArray());
+        JComboBox choiceBox = new JComboBox(Main.getFacade().getTitleRecordsModel().toArray());
 
         String number1;
         String number2;
@@ -301,7 +301,7 @@ public class OptionsController extends JPanel implements ActionListener, Initial
     @FXML
     void btn_searchRecord_onAction(ActionEvent event) {
       
-        JComboBox choiceBox = new JComboBox(Main.getFacade().getTitleRecordsListModel().toArray());
+        JComboBox choiceBox = new JComboBox(Main.getFacade().getTitleRecordsModel().toArray());
         JPanel myPanel = new JPanel();
         myPanel.add(choiceBox);
         myPanel.add(Box.createHorizontalStrut(15));
@@ -328,7 +328,7 @@ public class OptionsController extends JPanel implements ActionListener, Initial
         if (result == JOptionPane.OK_OPTION) {
             reservationID = Integer.valueOf(xField.getText());
             System.out.println("ID:  " + reservationID);
-            Main.getFacade().searchClientOfReservation(reservationID);
+            Main.getFacade().searchClientsInfoOfReservation(reservationID);
         }
     }
 
