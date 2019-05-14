@@ -67,10 +67,10 @@ public class AddReservationController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
       
         
-        List temp = Main.getFacade().getClientsModel();
+        List temp = Main.getFacade().getClientsModelString();
         ObservableList observableArrayList = FXCollections.observableArrayList(temp);
         comboBox_Client.setItems(observableArrayList);
-        temp = Main.getFacade().getTitleRecordsModelString();
+        temp = Main.getFacade().getRecordsModelString();
         observableArrayList = FXCollections.observableArrayList(temp);
         comboBox_Record.setItems(observableArrayList);
     }

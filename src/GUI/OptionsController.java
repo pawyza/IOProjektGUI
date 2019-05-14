@@ -272,7 +272,7 @@ public class OptionsController extends JPanel implements ActionListener, Initial
 
     @FXML
     void btn_searchDeleteReservation_onAction(ActionEvent event) throws IOException {
-      FXMLLoader fxmlLoader = new FXMLLoader(AddReservationController.class.getResource("SearchDeleteEReservation.fxml"));
+      FXMLLoader fxmlLoader = new FXMLLoader(AddReservationController.class.getResource("SearchDeleteReservation.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
