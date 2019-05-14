@@ -31,35 +31,23 @@ public class SearchDeleteRecordController implements Initializable {
         List temp = Main.getFacade().getRecordsList();
         System.out.println(temp.get(0));
         ObservableList<String[]> list = FXCollections.observableArrayList(temp);
-        RecordTable.setItems(list);
+        System.out.println(list.get(0));
 
-        TableColumn titleCol = new TableColumn("title");
-        TableColumn authorCol = new TableColumn("author");
-        TableColumn castCol = new TableColumn("cast");
-        TableColumn genreCol = new TableColumn("genre");
-        TableColumn numberCol = new TableColumn("number");
+        TableColumn titleRecordCol = new TableColumn("TitleRecord");
+        TableColumn numberCol = new TableColumn("Number");
       
 
 
-        titleCol.setCellValueFactory(
-                new PropertyValueFactory<Object, String>("Title")
-        );
-        authorCol.setCellValueFactory(
-                new PropertyValueFactory<Object, String>("Author")
-        );
-        castCol.setCellValueFactory(
-                new PropertyValueFactory<Object, String>("Cast")
-        );
-        genreCol.setCellValueFactory(
-                new PropertyValueFactory<Object, String>("Genre")
+        titleRecordCol.setCellValueFactory(
+                new PropertyValueFactory<Object, String>("titleRecord")
         );
         numberCol.setCellValueFactory(
-                new PropertyValueFactory<Object, String>("Number")
+                new PropertyValueFactory<Object, String>("number")
         );
        
         
-
-        RecordTable.getColumns().addAll(titleCol,authorCol, castCol,genreCol,numberCol);
+        RecordTable.setItems(list);
+        RecordTable.getColumns().addAll(numberCol,titleRecordCol);
     }
     @FXML
     private TableView<String[]> RecordTable;
@@ -79,7 +67,7 @@ public class SearchDeleteRecordController implements Initializable {
           
            Main.getFacade().deleteRecord(selIndex);// usuwanie record
             
-                    List temp = Main.getFacade().getTitleRecords();
+              List temp = Main.getFacade().getRecordsList();
             ObservableList<String[]> list = FXCollections.observableArrayList(temp);
         RecordTable.setItems(list);
     }

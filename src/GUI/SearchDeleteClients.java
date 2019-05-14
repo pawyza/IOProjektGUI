@@ -64,9 +64,9 @@ public class SearchDeleteClients implements  Initializable {
             int selIndex = ClientsTable.getSelectionModel().getSelectedIndex();
             Main.getFacade().deleteClient(Main.getFacade().transformClientIndexToNumber(selIndex));
             
-                    List temp = Main.getFacade().getClientList();
+            List temp = Main.getFacade().getClientList();
             ObservableList<String[]> list = FXCollections.observableArrayList(temp);
-        ClientsTable.setItems(list);
+            ClientsTable.setItems(list);
     }
     @FXML
     void backButton(ActionEvent event) {
