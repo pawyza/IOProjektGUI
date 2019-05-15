@@ -225,10 +225,8 @@ public class OptionsController extends JPanel implements ActionListener, Initial
             
             String data[] = {id,title,author,genre,cast};
             type = Main.getFacade().checkData(data);
-            System.out.println(type);
             String dataTitleRecord[] = {type,id,title,author,genre,cast};
             Main.getFacade().addTitleRecord(dataTitleRecord);
-            System.out.println(id + title + author + genre + cast);//???
         }
 
     }
