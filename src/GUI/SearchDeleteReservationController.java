@@ -9,7 +9,6 @@ import Model.ReservationM;
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -28,23 +27,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 public class SearchDeleteReservationController implements Initializable {
 
-   @Override
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
-       /*
-        List temp = Main.getFacade().getReservationList();
-        Main.getFacade().getReservationList();
-        ObservableList<String[]> list = FXCollections.observableArrayList(temp);
-        */
-         List<String[]> helper = Main.getFacade().getReservationStrings();
-         System.out.println(helper);
-         List<ReservationM> listHelper = new ArrayList();
-          for (String[] t : helper) {
-             System.out.println(t[0]);
-             System.out.println(t[1]);
-            listHelper.add(new ReservationM(t[0],t[1],t[2],t[3],t[4],t[5]));
+
+        List<String[]> helper = Main.getFacade().getReservationStrings();
+        List<ReservationM> listHelper = new ArrayList();
+        for (String[] t : helper) {
+            listHelper.add(new ReservationM(t[0], t[1], t[2], t[3], t[4], t[5]));
         }
-         ObservableList<ReservationM> list = FXCollections.observableArrayList(listHelper);  
-         
+        ObservableList<ReservationM> list = FXCollections.observableArrayList(listHelper);
+
         TableColumn idCol = new TableColumn("Client ID");
         TableColumn numberCol = new TableColumn("Number");
         TableColumn dateStartCol = new TableColumn("Date start");
@@ -52,13 +44,10 @@ public class SearchDeleteReservationController implements Initializable {
         TableColumn recordIDCol = new TableColumn("Record ID");
         TableColumn titleCol = new TableColumn("Title");
 
-
         idCol.setCellValueFactory(
                 new PropertyValueFactory<Object, String>("clientID")
         );
-        numberCol.setCellValueFactory(
-                new PropertyValueFactory<Object, String>("number")
-        );
+
         dateStartCol.setCellValueFactory(
                 new PropertyValueFactory<Object, String>("dateStart")
         );
@@ -68,37 +57,41 @@ public class SearchDeleteReservationController implements Initializable {
         recordIDCol.setCellValueFactory(
                 new PropertyValueFactory<Object, String>("recordID")
         );
-         titleCol.setCellValueFactory(
+        titleCol.setCellValueFactory(
                 new PropertyValueFactory<Object, String>("title")
         );
-        
+        numberCol.setCellValueFactory(
+                new PropertyValueFactory<Object, String>("numberID"));
+
+        ReservationTable.getColumns().addAll(idCol, numberCol, titleCol, dateStartCol, dateEndCol, recordIDCol);
         ReservationTable.setItems(list);
-        ReservationTable.getColumns().addAll(idCol,numberCol, dateStartCol ,dateEndCol,recordIDCol,titleCol);
     }
     @FXML
     private TableView<ReservationM> ReservationTable;
 
-  
     @FXML
     private JFXButton deleteButton;
 
     @FXML
     private JFXButton backButton;
 
-    
-
     @FXML
     void deleteButton(ActionEvent event) {
-            int selIndex = ReservationTable.getSelectionModel().getSelectedIndex();
-            Main.getFacade().deleteReservation(Main.getFacade().transformReservationIndexToNumber(selIndex)); 
-            
-                    List temp = Main.getFacade().getTitleRecords();
-            ObservableList<ReservationM> list = FXCollections.observableArrayList(temp);
+        int selIndex = ReservationTable.getSelectionModel().getSelectedIndex();
+        Main.getFacade().deleteReservation(Main.getFacade().transformReservationIndexToNumber(selIndex));
+
+        List<String[]> helper = Main.getFacade().getReservationStrings();
+        List<ReservationM> listHelper = new ArrayList();
+        for (String[] t : helper) {
+            listHelper.add(new ReservationM(t[0], t[1], t[2], t[3], t[4], t[5]));
+        }
+        ObservableList<ReservationM> list = FXCollections.observableArrayList(listHelper);
         ReservationTable.setItems(list);
     }
+
     @FXML
     void backButton(ActionEvent event) {
         OptionsController.recordStage.close();
-    }    
-    
+    }
+
 }

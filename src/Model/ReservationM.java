@@ -12,21 +12,27 @@ import java.time.LocalDate;
  * @author Kuba
  */
 public class ReservationM {
-    
-   private String clientID;
-   private String number;
-   private String dateStart;
-   private String dateEnd;
-   private String recordID;
-   private String title;
 
-    public ReservationM(String clientID, String numberCol, String dateStart, String dateEnd, String recordID, String title) {
+    private String clientID;
+    private String numberID;
+    private String dateStart;
+    private String dateEnd;
+    private String recordID;
+    private String title;
+
+    public ReservationM(String clientID, String numberID, String dateStart, String dateEnd, String recordID, String title) {
         this.clientID = clientID;
-        this.number = numberCol;
+        this.numberID = numberID;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
         this.recordID = recordID;
         this.title = title;
+    }
+
+    public ReservationM(String number, String dateStart, String dateEnd) {
+        this.numberID = number;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
     }
 
     public String getClientID() {
@@ -38,11 +44,11 @@ public class ReservationM {
     }
 
     public String getNumberCol() {
-        return number;
+        return numberID;
     }
 
     public void setNumberCol(String numberCol) {
-        this.number = numberCol;
+        this.numberID = numberCol;
     }
 
     public String getDateStart() {
@@ -76,7 +82,5 @@ public class ReservationM {
     public void setTitle(String title) {
         this.title = title;
     }
-   
-    
-    
+
 }

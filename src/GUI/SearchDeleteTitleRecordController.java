@@ -22,28 +22,24 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-
-
-public class SearchDeleteTitleRecordController implements  Initializable {
+public class SearchDeleteTitleRecordController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
-    
-       
+
         List<String[]> helper = Main.getFacade().getTitleRecordStrings();
         List<TitleRecordM> listHelper = new ArrayList();
-        
-         for (String[] t : helper) {
-             System.out.println(t[0]);
-             System.out.println(t[1]);
-             System.out.println(t[2]);
-             System.out.println(t[3]);
-             System.out.println(t[4]);
-            listHelper.add(new TitleRecordM(t[0],t[1],t[2],t[3],t[4]));
+
+        for (String[] t : helper) {
+            System.out.println(t[0]);
+            System.out.println(t[1]);
+            System.out.println(t[2]);
+            System.out.println(t[3]);
+            System.out.println(t[4]);
+            listHelper.add(new TitleRecordM(t[0], t[1], t[2], t[3], t[4]));
         }
-         ObservableList<TitleRecordM> list = FXCollections.observableArrayList(listHelper);
-        
+        ObservableList<TitleRecordM> list = FXCollections.observableArrayList(listHelper);
+
         TableColumn idCol = new TableColumn("ID");
         TableColumn titleCol = new TableColumn("Title");
         TableColumn authorCol = new TableColumn("Author");
@@ -55,7 +51,7 @@ public class SearchDeleteTitleRecordController implements  Initializable {
         authorCol.prefWidthProperty().bind(TitleRecordTable.widthProperty().multiply(0.20));
         castCol.prefWidthProperty().bind(TitleRecordTable.widthProperty().multiply(0.25));
         genreCol.prefWidthProperty().bind(TitleRecordTable.widthProperty().multiply(0.20));
-        
+
         idCol.setCellValueFactory(
                 new PropertyValueFactory<Object, String>("id")
         );
@@ -71,40 +67,38 @@ public class SearchDeleteTitleRecordController implements  Initializable {
         genreCol.setCellValueFactory(
                 new PropertyValueFactory<Object, String>("genre")
         );
-        
+
         TitleRecordTable.setItems(list);
-        TitleRecordTable.getColumns().addAll(idCol,titleCol,authorCol ,castCol,genreCol);
-       
+        TitleRecordTable.getColumns().addAll(idCol, titleCol, authorCol, castCol, genreCol);
+
     }
     @FXML
     private TableView<TitleRecordM> TitleRecordTable;
 
-  
     @FXML
     private JFXButton deleteButton;
 
     @FXML
     private JFXButton backButton;
 
-    
-
     @FXML
     void deleteButton(ActionEvent event) {
-            int selIndex = TitleRecordTable.getSelectionModel().getSelectedIndex();
-            Main.getFacade().deleteTitleRecord(Main.getFacade().transformTitleRecordIndexToString(selIndex));
-            
-           List<String[]> helper = Main.getFacade().getTitleRecordStrings();
-            List<TitleRecordM> listHelper = new ArrayList();
-        
-            for (String[] t : helper) {
-                listHelper.add(new TitleRecordM(t[0],t[1],t[2],t[3],t[4]));
-            }
-            ObservableList<TitleRecordM> list = FXCollections.observableArrayList(listHelper);
-            TitleRecordTable.setItems(list);
+        int selIndex = TitleRecordTable.getSelectionModel().getSelectedIndex();
+        Main.getFacade().deleteTitleRecord(Main.getFacade().transformTitleRecordIndexToString(selIndex));
+
+        List<String[]> helper = Main.getFacade().getTitleRecordStrings();
+        List<TitleRecordM> listHelper = new ArrayList();
+
+        for (String[] t : helper) {
+            listHelper.add(new TitleRecordM(t[0], t[1], t[2], t[3], t[4]));
+        }
+        ObservableList<TitleRecordM> list = FXCollections.observableArrayList(listHelper);
+        TitleRecordTable.setItems(list);
     }
+
     @FXML
     void backButton(ActionEvent event) {
         OptionsController.recordStage.close();
-    }    
-    
+    }
+
 }
