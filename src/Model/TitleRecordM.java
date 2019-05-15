@@ -97,7 +97,7 @@ public class TitleRecordM {
     
       @Override
     public String toString() {
-        String help = "\nTitle: " + getTitle();
+        String help = "Title: " + getTitle();
         help += " Author: " + getAuthor();
         return help;
     }
