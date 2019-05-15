@@ -50,6 +50,7 @@ public class AddReservationController implements Initializable {
         clientStr=clientStr.replace("[","");
         clientStr=clientStr.replace("]","");
         String[] client = clientStr.split(",");
+        System.out.println(client);
         Main.getFacade().addReservation(record,client,Integer.parseInt(numberOfReservation.getText()),datePicker_Begin.getValue(),datePicker_End.getValue());
     }
 

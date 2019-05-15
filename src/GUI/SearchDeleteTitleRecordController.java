@@ -29,6 +29,7 @@ public class SearchDeleteTitleRecordController implements  Initializable {
         
         List temp = Main.getFacade().getTitleRecordsList();
         ObservableList<String[]> list = FXCollections.observableArrayList(temp);
+        
         TableColumn idCol = new TableColumn("ID");
         TableColumn titleCol = new TableColumn("Title");
         TableColumn authorCol = new TableColumn("Author");

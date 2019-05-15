@@ -1,8 +1,10 @@
 package GUI;
 
+import Model.ClientM;
 import com.jfoenix.controls.JFXButton;
-import java.awt.event.ActionListener;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -10,20 +12,25 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import subbusinesstier.entities.Client;
 
 public class SearchDeleteClients implements  Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
         List temp = Main.getFacade().getClientList();
-
-        ObservableList<String[]> list = FXCollections.observableArrayList(temp);
+        List<String[]> helper = Main.getFacade().getClientStrings();
+        List<ClientM> listHelper = new ArrayList();
+        
+        for (String[] t : helper) {
+            listHelper.add(new ClientM(t[0],t[1],Integer.valueOf(t[2]),t[3]));
+        }
+        
+        ObservableList<ClientM> list = FXCollections.observableArrayList(listHelper);
+     
         ClientsTable.setItems(list);
 
         TableColumn ncCol = new TableColumn("Number Card");
@@ -48,7 +55,7 @@ public class SearchDeleteClients implements  Initializable {
         ClientsTable.getColumns().addAll(ncCol , loginCol, numberCol,passwordCol);
     }
     @FXML
-    private TableView<String[]> ClientsTable;
+    private TableView<ClientM> ClientsTable;
 
   
     @FXML
@@ -64,8 +71,14 @@ public class SearchDeleteClients implements  Initializable {
             int selIndex = ClientsTable.getSelectionModel().getSelectedIndex();
             Main.getFacade().deleteClient(Main.getFacade().transformClientIndexToNumber(selIndex));
             
-            List temp = Main.getFacade().getClientList();
-            ObservableList<String[]> list = FXCollections.observableArrayList(temp);
+            List temp = Main.getFacade().getClientStrings();
+            List<String[]> helper = Main.getFacade().getClientStrings();
+            List<ClientM> listHelper = new ArrayList();
+        
+        for (String[] t : helper) {
+            listHelper.add(new ClientM(t[0],t[1],Integer.valueOf(t[2]),t[3]));
+        }
+            ObservableList<ClientM> list = FXCollections.observableArrayList(listHelper);
             ClientsTable.setItems(list);
     }
     @FXML

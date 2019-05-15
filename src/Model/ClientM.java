@@ -27,6 +27,13 @@ public class ClientM {
         this.password = password;
     }
 
+    public ClientM(String numberCard, String login, int number, String password) {
+        this.numberCard = numberCard;
+        this.login = login;
+        this.number = number;
+        this.password = password;
+    }
+    
     public List<ReservationM> getReservations() {
         return reservations;
     }
