@@ -18,7 +18,6 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
-import java.util.Vector;
 import javafx.fxml.Initializable;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -212,15 +211,7 @@ public class OptionsController extends JPanel implements ActionListener, Initial
         myPanel.add(Box.createHorizontalStrut(15)); 
         myPanel.add(castField);
 
-        if(genreField == null){
-            type = "2";
-        }else if(genreField == null && castField == null){
-            type="1";
-        }else if(authorField == null && genreField == null && castField == null){
-            type="0";
-        }else{
-            type="3";
-        }
+        
         
 
         int result = JOptionPane.showConfirmDialog(null, myPanel,
@@ -231,9 +222,12 @@ public class OptionsController extends JPanel implements ActionListener, Initial
             genre = genreField.getText();
             cast = castField.getText();
             id = idField.getText();
-
-            String data[] = {type,id,title,author,genre,cast};
-            Main.getFacade().addTitleRecord(data);
+            
+            String data[] = {id,title,author,genre,cast};
+            type = Main.getFacade().checkData(data);
+            System.out.println(type);
+            String dataTitleRecord[] = {type,id,title,author,genre,cast};
+            Main.getFacade().addTitleRecord(dataTitleRecord);
             System.out.println(id + title + author + genre + cast);//???
         }
 
