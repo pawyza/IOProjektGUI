@@ -18,7 +18,6 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
-import java.util.Vector;
 import javafx.fxml.Initializable;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -132,6 +131,7 @@ public class OptionsController extends JPanel implements ActionListener, Initial
         stage.setTitle("Title record");
         stage.setResizable(false);
         this.recordStage = stage;
+
     }
 
     
