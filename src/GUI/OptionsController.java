@@ -134,37 +134,14 @@ public class OptionsController extends JPanel implements ActionListener, Initial
 
     @FXML
     void btn_addRecord_onAction(ActionEvent event) throws IOException {
-
-        JTextField yField = new JTextField(5);
-        JComboBox choiceBox = new JComboBox(Main.getFacade().getTitleRecordsModelString().toArray());
-
-        String number1;
-        String number2;
-
-
-
-        JPanel myPanel = new JPanel();
-
-        myPanel.add(choiceBox);
-        myPanel.add(Box.createHorizontalStrut(15));
-
-        myPanel.add(Box.createHorizontalStrut(15));
-        myPanel.add(new JLabel("Number 2 :"));
-        myPanel.add(yField);
-
-        int result = JOptionPane.showConfirmDialog(null, myPanel,
-                "Please enter data 1 and data 2 ", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION) {
-            int selectedIndex = choiceBox.getSelectedIndex();
-            number1 = Integer.toString(0);
-            number2 = yField.getText();
-            String data[] = {number1,number2};
-            System.out.println("Number 1:  " + number1);//????
-            System.out.println("Number 2: " + number2);//???
-            System.out.println(Arrays.toString(Main.getFacade().transformTittleRecordToString(selectedIndex)));
-            Main.getFacade().addRecord( Main.getFacade().transformTittleRecordToString(selectedIndex), data);
-        }
-
+        FXMLLoader fxmlLoader = new FXMLLoader(AddRecordController.class.getResource("addRecord.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+        stage.setTitle("Record");
+        stage.setResizable(false);
+        this.recordStage = stage;
     }
 
     @FXML
@@ -181,62 +158,15 @@ public class OptionsController extends JPanel implements ActionListener, Initial
 
 
     @FXML
-    void btn_addTitleRecord_onAction(ActionEvent event) {
-        JTextField titleField = new JTextField(5);
-        JTextField authorField = new JTextField(5);
-        JTextField idField = new JTextField(5);
-        JTextField genreField = new JTextField(5);
-        JTextField castField = new JTextField(5);
-
-        String title;
-        String author;
-        String id;
-        String genre;
-        String cast;
-        String type;
-        
-        JPanel myPanel = new JPanel();
-        myPanel.add(new JLabel("Number:"));
-        myPanel.add(idField);
-        myPanel.add(Box.createHorizontalStrut(15)); 
-        myPanel.add(new JLabel("Title:"));
-        myPanel.add(titleField);
-        myPanel.add(Box.createHorizontalStrut(15)); 
-        myPanel.add(new JLabel("Author:"));
-        myPanel.add(Box.createHorizontalStrut(15)); 
-        myPanel.add(authorField);
-        myPanel.add(new JLabel("Genre:"));
-        myPanel.add(Box.createHorizontalStrut(15)); 
-        myPanel.add(genreField);
-        myPanel.add(new JLabel("Cast:"));
-        myPanel.add(Box.createHorizontalStrut(15)); 
-        myPanel.add(castField);
-
-        if(genreField == null){
-            type = "2";
-        }else if(genreField == null && castField == null){
-            type="1";
-        }else if(authorField == null && genreField == null && castField == null){
-            type="0";
-        }else{
-            type="3";
-        }
-        
-
-        int result = JOptionPane.showConfirmDialog(null, myPanel,
-                "Please enter TitleRecord parameters", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION) {
-            title = titleField.getText();
-            author = authorField.getText();
-            genre = genreField.getText();
-            cast = castField.getText();
-            id = idField.getText();
-
-            String data[] = {type,id,title,author,genre,cast};
-            Main.getFacade().addTitleRecord(data);
-            System.out.println(id + title + author + genre + cast);//???
-        }
-
+    void btn_addTitleRecord_onAction(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(AddTitleRecordController.class.getResource("addTitleRecord.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+        stage.setTitle("Title record");
+        stage.setResizable(false);
+        this.recordStage = stage;
     }
 
     
