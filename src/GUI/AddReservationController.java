@@ -100,19 +100,7 @@ public class AddReservationController implements Initializable {
     private void recordOnAction(ActionEvent event) {
 
         TitleRecordM help = comboBox_Record.getSelectionModel().getSelectedItem();
-        String type;
-        if(help.getGenre() == null){
-            type = "2";
-        }else if(help.getGenre() == null && help.getCast() == null){
-            type="1";
-        }else if(help.getAuthor() == null && help.getGenre() == null && help.getCast() == null){
-            type="0";
-        }else{
-            type="3";
-        }
-        
-        titleRecordHelper = new String[]{type, help.getId(), help.getTitle(), help.getAuthor(), help.getCast(), help.getGenre()};
-        
+        titleRecordHelper = new String[]{"3", help.getId(), help.getTitle(), help.getAuthor(), help.getCast(), help.getGenre()};
 
     }
 
