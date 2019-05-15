@@ -29,6 +29,7 @@ public class SearchDeleteReservationController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
        
         List temp = Main.getFacade().getReservationList();
+        Main.getFacade().getReservationList();
         ObservableList<String[]> list = FXCollections.observableArrayList(temp);
         
 
@@ -77,7 +78,7 @@ public class SearchDeleteReservationController implements Initializable {
     @FXML
     void deleteButton(ActionEvent event) {
             int selIndex = ReservationTable.getSelectionModel().getSelectedIndex();
-            Main.getFacade().deleteReservation(selIndex); 
+            Main.getFacade().deleteReservation(Main.getFacade().transformReservationIndexToNumber(selIndex)); 
             
                     List temp = Main.getFacade().getTitleRecords();
             ObservableList<String[]> list = FXCollections.observableArrayList(temp);

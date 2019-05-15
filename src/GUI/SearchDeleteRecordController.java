@@ -18,11 +18,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-/**
- * FXML Controller class
- *
- * @author Kuba
- */
+        
 public class SearchDeleteRecordController implements Initializable {
 
    @Override
@@ -65,7 +61,7 @@ public class SearchDeleteRecordController implements Initializable {
     void deleteButton(ActionEvent event) {
             int selIndex = RecordTable.getSelectionModel().getSelectedIndex();
           
-           Main.getFacade().deleteRecord(selIndex);// usuwanie record
+           Main.getFacade().deleteRecord(Main.getFacade().transformRecordIndexToNumber(selIndex));
             
               List temp = Main.getFacade().getRecordsList();
             ObservableList<String[]> list = FXCollections.observableArrayList(temp);
