@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="100.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AddRecordController">
+    <stylesheets>
+        <URL value="@/Resources/Theme.css" />
+    </stylesheets>
+   <children>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" spacing="20.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TitleRecord number:" />
+            <ComboBox fx:id="titleRecordBox" prefHeight="24.0" prefWidth="214.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Record number:" />
+            <TextField fx:id="recordField" prefHeight="26.0" prefWidth="42.0" />
+            <Button mnemonicParsing="false" onAction="#on_Add" text="Add" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutY="50.0" prefHeight="50.0" prefWidth="600.0">
+         <children>
+            <Text fx:id="infoField" strokeType="OUTSIDE" strokeWidth="0.0" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

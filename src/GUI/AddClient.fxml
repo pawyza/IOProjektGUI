@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="GUI.AddClientController">
+    <stylesheets>
+        <URL value="@/Resources/Theme.css" />
+    </stylesheets>
+    <children>
+        <HBox alignment="CENTER" layoutX="22.0" layoutY="24.0" prefHeight="245.0" prefWidth="453.0" spacing="20.0" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="24.0">
+            <children>
+                <VBox alignment="CENTER" prefHeight="269.0" prefWidth="252.0" spacing="30.0">
+                    <children>
+                        <JFXTextField fx:id="idOfClient" maxWidth="100.0" minWidth="100.0" onAction="#recordOnAction" prefHeight="23.0" prefWidth="100.0" promptText="Number" text="ID" />
+                        <JFXTextField fx:id="cardNumberOfClient" maxWidth="100.0" minWidth="100.0" onAction="#recordOnAction" prefHeight="23.0" prefWidth="100.0" promptText="Number" text="Card Number" />
+                        <JFXTextField fx:id="loginOfClient" maxWidth="100.0" minWidth="100.0" onAction="#recordOnAction" prefHeight="23.0" prefWidth="100.0" promptText="Number" text="Login" />
+                        <JFXTextField fx:id="passwordOfClient" maxWidth="100.0" minWidth="100.0" onAction="#recordOnAction" prefHeight="23.0" prefWidth="100.0" promptText="Number" text="Password" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+        <JFXButton layoutX="116.0" layoutY="260.0"  onAction="#btn_OK_OnAction" prefHeight="26.0" prefWidth="75.0" text="Confirm" AnchorPane.bottomAnchor="21.599999999999966" AnchorPane.leftAnchor="116.0" AnchorPane.rightAnchor="308.8" AnchorPane.topAnchor="270.0" />
+        <JFXButton layoutX="288.0" layoutY="260.0"  onAction="#btn_Return_OnAction" prefHeight="26.0" prefWidth="75.0" text="Return" AnchorPane.bottomAnchor="21.6" AnchorPane.leftAnchor="288.0" AnchorPane.rightAnchor="136.8" AnchorPane.topAnchor="270.0" />
+    </children>
+</AnchorPane>
