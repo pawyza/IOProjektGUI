@@ -26,25 +26,25 @@
       </MenuBar>
       <HBox alignment="CENTER" layoutX="15.0" layoutY="102.0" prefHeight="145.0" prefWidth="568.0" spacing="40.0" AnchorPane.bottomAnchor="153.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="102.0">
          <children>
-            <VBox alignment="CENTER" spacing="10.0">
+            <VBox alignment="CENTER" prefHeight="146.0" prefWidth="300.0" spacing="10.0">
                <children>
-                  <JFXButton fx:id="btn_addRecord" buttonType="RAISED" onAction="#btn_addRecord_onAction" prefHeight="26.0" prefWidth="154.0" text="Add Record" />
-                  <JFXButton fx:id="btn_addTitleRecord" buttonType="RAISED" onAction="#btn_addTitleRecord_onAction" prefHeight="26.0" prefWidth="154.0" text="Add TitleRecord" />
-                  <JFXButton fx:id="btn_addClient" buttonType="RAISED" onAction="#btn_addClient_onAction" prefHeight="26.0" prefWidth="154.0" text="Add Client" />
-                  <JFXButton fx:id="btn_addReservation" buttonType="RAISED" onAction="#btn_addReservation_onAction" prefHeight="26.0" prefWidth="154.0" text="Add Reservation" />
+                  <JFXButton fx:id="btn_addRecord" buttonType="RAISED" onAction="#btn_addRecord_onAction" prefHeight="26.0" prefWidth="300.0" text="Add Record" />
+                  <JFXButton fx:id="btn_addTitleRecord" buttonType="RAISED" onAction="#btn_addTitleRecord_onAction" prefHeight="26.0" prefWidth="300.0" text="Add TitleRecord" />
+                  <JFXButton fx:id="btn_addClient" buttonType="RAISED" onAction="#btn_addClient_onAction" prefHeight="26.0" prefWidth="300.0" text="Add Client" />
+                  <JFXButton fx:id="btn_addReservation" buttonType="RAISED" onAction="#btn_addReservation_onAction" prefHeight="26.0" prefWidth="300.0" text="Add Reservation" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="147.0" prefWidth="181.0" spacing="10.0">
+            <VBox alignment="CENTER" prefHeight="146.0" prefWidth="300.0" spacing="10.0">
                <children>
-                  <JFXButton fx:id="btn_searchDeleteRecord" buttonType="RAISED" onAction="#btn_searchDeleteRecord_onAction" prefHeight="26.0" prefWidth="226.0" text="Search/Delete Record" />
-                  <JFXButton fx:id="btn_searchDeleteTitleRecord" buttonType="RAISED" onAction="#btn_searchDeleteTitleRecord_onAction" prefHeight="26.0" prefWidth="201.0" text="Search/Delete TitleRecord" />
+                  <JFXButton fx:id="btn_searchDeleteRecord" buttonType="RAISED" onAction="#btn_searchDeleteRecord_onAction" prefHeight="26.0" prefWidth="300.0" text="Search/Delete Record" />
+                  <JFXButton fx:id="btn_searchDeleteTitleRecord" buttonType="RAISED" onAction="#btn_searchDeleteTitleRecord_onAction" prefHeight="26.0" prefWidth="300.0" text="Search/Delete TitleRecord" />
                   <JFXButton fx:id="btn_searchDeleteClient" buttonType="RAISED" onAction="#btn_searchDeleteClient_onAction" prefHeight="26.0" prefWidth="300.0" text="Search/Delete Client" />
-                  <JFXButton fx:id="btn_searchDeleteReservation" buttonType="RAISED" onAction="#btn_searchDeleteReservation_onAction" prefHeight="26.0" prefWidth="192.0" text="Search/Delete Reservation" />
+                  <JFXButton fx:id="btn_searchDeleteReservation" buttonType="RAISED" onAction="#btn_searchDeleteReservation_onAction" prefHeight="26.0" prefWidth="300.0" text="Search/Delete Reservation" />
                </children>
             </VBox>
          
          </children>
       </HBox>
-      <JFXButton fx:id="btn_Return" buttonType="RAISED" layoutX="223.0" layoutY="334.0" onAction="#btn_Return_onAction" prefHeight="26.0" prefWidth="154.0" text="Return" AnchorPane.bottomAnchor="39.6" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="222.6" AnchorPane.topAnchor="334.0" />
+      <JFXButton fx:id="btn_Return" buttonType="RAISED" layoutX="150.0" layoutY="330.0" onAction="#btn_Return_onAction" prefHeight="26.0" prefWidth="300.0" text="Return" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="330.0" />
    </children>
 </AnchorPane>

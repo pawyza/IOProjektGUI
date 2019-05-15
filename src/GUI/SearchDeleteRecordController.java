@@ -5,8 +5,10 @@
  */
 package GUI;
 
+import Model.RecordM;
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -23,19 +25,31 @@ public class SearchDeleteRecordController implements Initializable {
 
    @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+        /*
         List temp = Main.getFacade().getRecordsList();
-        System.out.println(temp.get(0));
         ObservableList<String[]> list = FXCollections.observableArrayList(temp);
-        System.out.println(list.get(0));
+*/
+        List<String[]> helper = Main.getFacade().getRecordStrings();
+        List<RecordM> listHelper = new ArrayList();
+       
+         for (String[] t : helper) {
+             System.out.println(t[0]);
+             System.out.println(t[1]);
+            listHelper.add(new RecordM(t[0],t[1]));
+        }
+         System.out.println(listHelper.get(0).getNumber());
+         System.out.println(listHelper.get(0).getRecordTitle());
+         ObservableList<RecordM> list = FXCollections.observableArrayList(listHelper);
+        
 
         TableColumn titleRecordCol = new TableColumn("TitleRecord");
         TableColumn numberCol = new TableColumn("Number");
       
-
+        numberCol.prefWidthProperty().bind(RecordTable.widthProperty().multiply(0.20));
+        titleRecordCol.prefWidthProperty().bind(RecordTable.widthProperty().multiply(0.80));
 
         titleRecordCol.setCellValueFactory(
-                new PropertyValueFactory<Object, String>("titleRecord")
+                new PropertyValueFactory<Object, String>("recordTitle")
         );
         numberCol.setCellValueFactory(
                 new PropertyValueFactory<Object, String>("number")
@@ -46,7 +60,7 @@ public class SearchDeleteRecordController implements Initializable {
         RecordTable.getColumns().addAll(numberCol,titleRecordCol);
     }
     @FXML
-    private TableView<String[]> RecordTable;
+    private TableView<RecordM> RecordTable;
 
   
     @FXML
@@ -63,8 +77,14 @@ public class SearchDeleteRecordController implements Initializable {
           
            Main.getFacade().deleteRecord(Main.getFacade().transformRecordIndexToNumber(selIndex));
             
-              List temp = Main.getFacade().getRecordsList();
-            ObservableList<String[]> list = FXCollections.observableArrayList(temp);
+            List<String[]>helper =  Main.getFacade().getRecordStrings();
+        List<RecordM> listHelper = new ArrayList();
+        
+         for (String[] t : helper) {
+            listHelper.add(new RecordM(t[0],t[1]));
+        }
+         
+        ObservableList<RecordM> list = FXCollections.observableArrayList(listHelper);
         RecordTable.setItems(list);
     }
     @FXML

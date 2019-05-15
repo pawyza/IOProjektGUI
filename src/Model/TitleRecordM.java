@@ -30,6 +30,15 @@ public class TitleRecordM {
         this.cast = cast;
     }
 
+    public TitleRecordM(String id, String title, String author, String genre, String cast) {
+        this.title = title;
+        this.author = author;
+        this.id = id;
+        this.genre = genre;
+        this.cast = cast;
+    }
+
+    
     public String getTitle() {
         return title;
     }

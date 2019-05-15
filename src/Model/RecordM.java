@@ -14,39 +14,30 @@ import java.util.ArrayList;
 public class RecordM {
     
     
-    private int number;
-    private TitleRecordM titleRecord;
-    private ArrayList<ReservationM> reservations = new ArrayList();
+ private String number;
+ private String recordTitle;
 
-    public RecordM(int number, TitleRecordM titleRecord, ArrayList<ReservationM> reservations) {
+    public RecordM(String number, String recordTitle) {
         this.number = number;
-        this.titleRecord = titleRecord;
-        this.reservations = reservations;
+        this.recordTitle = recordTitle;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
-    public TitleRecordM getTitleRecord() {
-        return titleRecord;
+    public String getRecordTitle() {
+        return recordTitle;
     }
 
-    public void setTitleRecord(TitleRecordM titleRecord) {
-        this.titleRecord = titleRecord;
+    public void setRecordTitle(String recordTitle) {
+        this.recordTitle = recordTitle;
     }
-
-    public ArrayList<ReservationM> getReservations() {
-        return reservations;
-    }
-
-    public void setReservations(ArrayList<ReservationM> reservations) {
-        this.reservations = reservations;
-    }
+ 
     
     
 }

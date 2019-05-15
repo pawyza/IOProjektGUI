@@ -5,8 +5,10 @@
  */
 package GUI;
 
+import Model.TitleRecordM;
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -27,8 +29,20 @@ public class SearchDeleteTitleRecordController implements  Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
-        List temp = Main.getFacade().getTitleRecordsList();
-        ObservableList<String[]> list = FXCollections.observableArrayList(temp);
+    
+       
+        List<String[]> helper = Main.getFacade().getTitleRecordStrings();
+        List<TitleRecordM> listHelper = new ArrayList();
+        
+         for (String[] t : helper) {
+             System.out.println(t[0]);
+             System.out.println(t[1]);
+             System.out.println(t[2]);
+             System.out.println(t[3]);
+             System.out.println(t[4]);
+            listHelper.add(new TitleRecordM(t[0],t[1],t[2],t[3],t[4]));
+        }
+         ObservableList<TitleRecordM> list = FXCollections.observableArrayList(listHelper);
         
         TableColumn idCol = new TableColumn("ID");
         TableColumn titleCol = new TableColumn("Title");
@@ -36,6 +50,11 @@ public class SearchDeleteTitleRecordController implements  Initializable {
         TableColumn castCol = new TableColumn("Cast");
         TableColumn genreCol = new TableColumn("Genre");
 
+        idCol.prefWidthProperty().bind(TitleRecordTable.widthProperty().multiply(0.10));
+        titleCol.prefWidthProperty().bind(TitleRecordTable.widthProperty().multiply(0.25));
+        authorCol.prefWidthProperty().bind(TitleRecordTable.widthProperty().multiply(0.20));
+        castCol.prefWidthProperty().bind(TitleRecordTable.widthProperty().multiply(0.25));
+        genreCol.prefWidthProperty().bind(TitleRecordTable.widthProperty().multiply(0.20));
         
         idCol.setCellValueFactory(
                 new PropertyValueFactory<Object, String>("id")
@@ -54,11 +73,11 @@ public class SearchDeleteTitleRecordController implements  Initializable {
         );
         
         TitleRecordTable.setItems(list);
-        TitleRecordTable.getColumns().addAll(titleCol,authorCol, idCol ,  castCol,genreCol);
+        TitleRecordTable.getColumns().addAll(idCol,titleCol,authorCol ,castCol,genreCol);
        
     }
     @FXML
-    private TableView<String[]> TitleRecordTable;
+    private TableView<TitleRecordM> TitleRecordTable;
 
   
     @FXML
@@ -74,9 +93,14 @@ public class SearchDeleteTitleRecordController implements  Initializable {
             int selIndex = TitleRecordTable.getSelectionModel().getSelectedIndex();
             Main.getFacade().deleteTitleRecord(Main.getFacade().transformTitleRecordIndexToString(selIndex));
             
-                    List temp = Main.getFacade().getTitleRecordsList();
-            ObservableList<String[]> list = FXCollections.observableArrayList(temp);
-        TitleRecordTable.setItems(list);
+           List<String[]> helper = Main.getFacade().getTitleRecordStrings();
+            List<TitleRecordM> listHelper = new ArrayList();
+        
+            for (String[] t : helper) {
+                listHelper.add(new TitleRecordM(t[0],t[1],t[2],t[3],t[4]));
+            }
+            ObservableList<TitleRecordM> list = FXCollections.observableArrayList(listHelper);
+            TitleRecordTable.setItems(list);
     }
     @FXML
     void backButton(ActionEvent event) {

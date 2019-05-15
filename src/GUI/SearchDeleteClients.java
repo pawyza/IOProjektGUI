@@ -21,10 +21,9 @@ public class SearchDeleteClients implements  Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
-        List temp = Main.getFacade().getClientList();
+       // List temp = Main.getFacade().getClientList();
         List<String[]> helper = Main.getFacade().getClientStrings();
         List<ClientM> listHelper = new ArrayList();
-        
         for (String[] t : helper) {
             listHelper.add(new ClientM(t[0],t[1],Integer.valueOf(t[2]),t[3]));
         }
@@ -36,8 +35,13 @@ public class SearchDeleteClients implements  Initializable {
         TableColumn ncCol = new TableColumn("Number Card");
         TableColumn loginCol = new TableColumn("Login");
         TableColumn numberCol = new TableColumn("Number");
-        TableColumn passwordCol = new TableColumn("Password");
-
+     
+        
+        ncCol.prefWidthProperty().bind(ClientsTable.widthProperty().multiply(0.50));
+        loginCol.prefWidthProperty().bind(ClientsTable.widthProperty().multiply(0.25));
+        numberCol.prefWidthProperty().bind(ClientsTable.widthProperty().multiply(0.25));
+      
+        
         ncCol.setCellValueFactory(
                 new PropertyValueFactory<Object, String>("numberCard")
         );
@@ -47,12 +51,10 @@ public class SearchDeleteClients implements  Initializable {
         numberCol.setCellValueFactory(
                 new PropertyValueFactory<Object, String>("number")
         );
-        passwordCol.setCellValueFactory(
-                new PropertyValueFactory<Object, String>("password")
-        );
+       
         
 
-        ClientsTable.getColumns().addAll(ncCol , loginCol, numberCol,passwordCol);
+        ClientsTable.getColumns().addAll(numberCol,loginCol, ncCol);
     }
     @FXML
     private TableView<ClientM> ClientsTable;
@@ -70,14 +72,13 @@ public class SearchDeleteClients implements  Initializable {
     void deleteButton(ActionEvent event) {
             int selIndex = ClientsTable.getSelectionModel().getSelectedIndex();
             Main.getFacade().deleteClient(Main.getFacade().transformClientIndexToNumber(selIndex));
-            
-            List temp = Main.getFacade().getClientStrings();
+           
             List<String[]> helper = Main.getFacade().getClientStrings();
             List<ClientM> listHelper = new ArrayList();
         
-        for (String[] t : helper) {
-            listHelper.add(new ClientM(t[0],t[1],Integer.valueOf(t[2]),t[3]));
-        }
+            for (String[] t : helper) {
+                listHelper.add(new ClientM(t[0],t[1],Integer.valueOf(t[2]),t[3]));
+            }
             ObservableList<ClientM> list = FXCollections.observableArrayList(listHelper);
             ClientsTable.setItems(list);
     }
