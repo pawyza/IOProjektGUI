@@ -63,6 +63,14 @@ public class SearchDeleteReservationController implements Initializable {
         numberCol.setCellValueFactory(
                 new PropertyValueFactory<Object, String>("numberID"));
 
+        
+        idCol.prefWidthProperty().bind(ReservationTable.widthProperty().multiply(0.10));
+        numberCol.prefWidthProperty().bind(ReservationTable.widthProperty().multiply(0.10));
+        dateStartCol.prefWidthProperty().bind(ReservationTable.widthProperty().multiply(0.20));
+        dateEndCol.prefWidthProperty().bind(ReservationTable.widthProperty().multiply(0.20));
+        titleCol.prefWidthProperty().bind(ReservationTable.widthProperty().multiply(0.20));
+        recordIDCol.prefWidthProperty().bind(ReservationTable.widthProperty().multiply(0.2));
+        
         ReservationTable.getColumns().addAll(idCol, numberCol, titleCol, dateStartCol, dateEndCol, recordIDCol);
         ReservationTable.setItems(list);
     }
