@@ -37,8 +37,6 @@ public class SearchDeleteRecordController implements Initializable {
              System.out.println(t[1]);
             listHelper.add(new RecordM(t[0],t[1]));
         }
-         System.out.println(listHelper.get(0).getNumber());
-         System.out.println(listHelper.get(0).getRecordTitle());
          ObservableList<RecordM> list = FXCollections.observableArrayList(listHelper);
         
 

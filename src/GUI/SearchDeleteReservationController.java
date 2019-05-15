@@ -5,8 +5,11 @@
  */
 package GUI;
 
+import Model.ReservationM;
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -27,13 +30,22 @@ public class SearchDeleteReservationController implements Initializable {
 
    @Override
     public void initialize(URL location, ResourceBundle resources) {
-       
+       /*
         List temp = Main.getFacade().getReservationList();
         Main.getFacade().getReservationList();
         ObservableList<String[]> list = FXCollections.observableArrayList(temp);
-        
-
-        TableColumn idCol = new TableColumn("Clients ID");
+        */
+         List<String[]> helper = Main.getFacade().getReservationStrings();
+         System.out.println(helper);
+         List<ReservationM> listHelper = new ArrayList();
+          for (String[] t : helper) {
+             System.out.println(t[0]);
+             System.out.println(t[1]);
+            listHelper.add(new ReservationM(t[0],t[1],t[2],t[3],t[4],t[5]));
+        }
+         ObservableList<ReservationM> list = FXCollections.observableArrayList(listHelper);  
+         
+        TableColumn idCol = new TableColumn("Client ID");
         TableColumn numberCol = new TableColumn("Number");
         TableColumn dateStartCol = new TableColumn("Date start");
         TableColumn dateEndCol = new TableColumn("Date end");
@@ -42,7 +54,7 @@ public class SearchDeleteReservationController implements Initializable {
 
 
         idCol.setCellValueFactory(
-                new PropertyValueFactory<Object, String>("client")
+                new PropertyValueFactory<Object, String>("clientID")
         );
         numberCol.setCellValueFactory(
                 new PropertyValueFactory<Object, String>("number")
@@ -54,7 +66,7 @@ public class SearchDeleteReservationController implements Initializable {
                 new PropertyValueFactory<Object, String>("dateEnd")
         );
         recordIDCol.setCellValueFactory(
-                new PropertyValueFactory<Object, String>("record")
+                new PropertyValueFactory<Object, String>("recordID")
         );
          titleCol.setCellValueFactory(
                 new PropertyValueFactory<Object, String>("title")
@@ -64,7 +76,7 @@ public class SearchDeleteReservationController implements Initializable {
         ReservationTable.getColumns().addAll(idCol,numberCol, dateStartCol ,dateEndCol,recordIDCol,titleCol);
     }
     @FXML
-    private TableView<String[]> ReservationTable;
+    private TableView<ReservationM> ReservationTable;
 
   
     @FXML
@@ -81,7 +93,7 @@ public class SearchDeleteReservationController implements Initializable {
             Main.getFacade().deleteReservation(Main.getFacade().transformReservationIndexToNumber(selIndex)); 
             
                     List temp = Main.getFacade().getTitleRecords();
-            ObservableList<String[]> list = FXCollections.observableArrayList(temp);
+            ObservableList<ReservationM> list = FXCollections.observableArrayList(temp);
         ReservationTable.setItems(list);
     }
     @FXML

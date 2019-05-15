@@ -13,59 +13,70 @@ import java.time.LocalDate;
  */
 public class ReservationM {
     
-    private RecordM record;
-    private ClientM client;
-    private int number;
-    private LocalDate date;
-    private RentalM rental;
+   private String clientID;
+   private String number;
+   private String dateStart;
+   private String dateEnd;
+   private String recordID;
+   private String title;
 
-    public ReservationM(RecordM record, ClientM client, int number, LocalDate date, RentalM rental) {
-        this.record = record;
-        this.client = client;
-        this.number = number;
-        this.date = date;
-        this.rental = rental;
+    public ReservationM(String clientID, String numberCol, String dateStart, String dateEnd, String recordID, String title) {
+        this.clientID = clientID;
+        this.number = numberCol;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
+        this.recordID = recordID;
+        this.title = title;
     }
 
-    public RecordM getRecord() {
-        return record;
+    public String getClientID() {
+        return clientID;
     }
 
-    public void setRecord(RecordM record) {
-        this.record = record;
+    public void setClientID(String clientID) {
+        this.clientID = clientID;
     }
 
-    public ClientM getClient() {
-        return client;
-    }
-
-    public void setClient(ClientM client) {
-        this.client = client;
-    }
-
-    public int getNumber() {
+    public String getNumberCol() {
         return number;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setNumberCol(String numberCol) {
+        this.number = numberCol;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public String getDateStart() {
+        return dateStart;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setDateStart(String dateStart) {
+        this.dateStart = dateStart;
     }
 
-    public RentalM getRental() {
-        return rental;
+    public String getDateEnd() {
+        return dateEnd;
     }
 
-    public void setRental(RentalM rental) {
-        this.rental = rental;
+    public void setDateEnd(String dateEnd) {
+        this.dateEnd = dateEnd;
     }
+
+    public String getRecordID() {
+        return recordID;
+    }
+
+    public void setRecordID(String recordID) {
+        this.recordID = recordID;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+   
     
     
 }

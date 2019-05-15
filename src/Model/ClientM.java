@@ -76,10 +76,8 @@ public class ClientM {
     
        @Override
     public String toString() {
-        String client = "Login: " + login + " Number: " + number + " NumberCard: " + numberCard + " Password: " + password + "\n";
-        for(ReservationM reservation : reservations){
-            client += reservation.toString();
-        }
+        String client = number+ " "+ login+" " + numberCard + "\n";
+      
         return client + "\n";
     }
 }

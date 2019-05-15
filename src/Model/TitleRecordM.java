@@ -99,8 +99,6 @@ public class TitleRecordM {
     public String toString() {
         String help = "\nTitle: " + getTitle();
         help += " Author: " + getAuthor();
-        help += " Cast: " + getCast();
-        help += " Genre: " + getGenre();
         return help;
     }
 }
