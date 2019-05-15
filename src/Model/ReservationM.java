@@ -43,13 +43,15 @@ public class ReservationM {
         this.clientID = clientID;
     }
 
-    public String getNumberCol() {
+    public String getNumberID() {
         return numberID;
     }
 
-    public void setNumberCol(String numberCol) {
-        this.numberID = numberCol;
+    public void setNumberID(String numberID) {
+        this.numberID = numberID;
     }
+
+   
 
     public String getDateStart() {
         return dateStart;
