@@ -84,49 +84,14 @@ public class OptionsController extends JPanel implements ActionListener, Initial
 
     @FXML
     void btn_addClient_onAction(ActionEvent event) throws IOException {
-       
-        JTextField xField = new JTextField(5);
-        JTextField yField = new JTextField(5);
-        JTextField idField = new JTextField(5);
-        JPasswordField passField = new JPasswordField(5);
-        String login;
-        String password;
-        String cardNumber;
-        String id;
-        String data[] = new String[4];
-
-        JPanel myPanel = new JPanel();
-        myPanel.add(new JLabel("ID:"));
-        myPanel.add(idField);
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-        myPanel.add(new JLabel("Card Number:"));
-        myPanel.add(xField);
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-        myPanel.add(new JLabel("Login:"));
-        myPanel.add(yField);
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-        myPanel.add(new JLabel("Password:"));
-        myPanel.add(passField);
-
-        int result = JOptionPane.showConfirmDialog(null, myPanel,
-                "Please enter card number and login", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION) {
-            login = yField.getText();
-            cardNumber = xField.getText();
-            password = passField.getText();
-            id = idField.getText();
-            System.out.println("Login:  " + login);
-            System.out.println("CardNumber: " + cardNumber);
-            System.out.println("Password: "+ password);
-            data[0] = cardNumber;
-            data[1] = login;
-            data[2] = id;
-            data[3] = password;
-            Main.getFacade().addClient(data);
-
-        }
-
-
+       FXMLLoader fxmlLoader = new FXMLLoader(AddClientController.class.getResource("AddClient.fxml"));
+         Parent root = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+        stage.setTitle("Rental");
+        stage.setResizable(false);
+        this.recordStage = stage;
     }
 
 
